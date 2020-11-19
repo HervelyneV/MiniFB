@@ -8,4 +8,5 @@ $listeDesActions = array(
     "connexion" => "traitement/connexion.php",
     "deconnexion" => "traitement/deconnexion.php",
     "mur" => "vues/mur.php",
+
 );
