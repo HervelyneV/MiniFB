@@ -50,6 +50,11 @@ color : #29335C;
     font-size: 1rem;
     color: white;
 }
+
+#login_champ #inscristoi {
+    margin-top: 300px;
+    font-size: 8pt;
+}
 #right_moose {
     
 display: flex;

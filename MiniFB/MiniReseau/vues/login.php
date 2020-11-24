@@ -9,6 +9,7 @@
             <br>
             <input id="envoyer_input" type="submit" name="Connexion" value="Connexion"/>
         </form>
+        <a id="inscristoi" href="index.php?action=inscription">Pas encore de compte? Rejoins nous !</a>
     </div>
     
     <div id="right_moose">

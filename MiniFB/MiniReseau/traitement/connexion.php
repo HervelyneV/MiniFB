@@ -1,6 +1,6 @@
 <?php
 if(isset($_POST["login"]) && isset($_POST['password'])) {
-    $sql = "SELECT * FROM utilisateur WHERE login=? AND mdp=PASSWORD(?)";
+    $sql = "SELECT * FROM user WHERE login=? AND mdp=PASSWORD(?)";
 
     // Etape 1  : preparation
     $q = $pdo->prepare($sql);
@@ -19,7 +19,7 @@ if(isset($_POST["login"]) && isset($_POST['password'])) {
     else {
         $_SESSION['id'] = $line['id'];
         $_SESSION['login'] = $line['login'];
-        header("Location: index.php");
+        header("Location: index.php?action=mur");
         // sinon on crée les variables de session $_SESSION['id'] et $_SESSION['login'] et on va à la page d'accueil
 
     }

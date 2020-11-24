@@ -19,6 +19,8 @@ ob_start(); // Je démarre le buffer de sortie : les données à afficher sont s
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/login_style.css">
     <link rel="stylesheet" href="css/mur_style.css">
+    <link rel="stylesheet" href="css/signin_style.css">
+    
     
     <script src="js/jquery-3.2.1.min.js"></script>
 </head>
@@ -56,7 +58,8 @@ if (isset($_SESSION['info'])) {
             if (isset($_GET["action"])) {
                 $action = $_GET["action"];
             } else {
-                $action = "accueil";
+                $action = "accueil
+                ";
             }
 
             // Est ce que cette action existe dans la liste des actions
