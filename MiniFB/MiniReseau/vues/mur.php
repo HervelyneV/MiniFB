@@ -4,29 +4,71 @@
 <header>
 <div id="header">
     
-<img src="logo.png" alt="LOGO DU SITE"  >
-<img src="home.png" alt="ICONE HOME">
-<img src="profil.png" alt="ICONE PROFIL">
-<img src="parametre.png" alt="ICONE PARAMETRE">
+<img src="./css/src/Logo_moose.png" alt="LOGO DU SITE" width="70px" >
+<img src="./css/src/home.png" alt="ICONE HOME" width="60px">
+<img src="./css/src/profil.png" alt="ICONE PROFIL" width="90px">
+<img src="./css/src/settings" alt="ICONE PARAMETRE" width="60px">
 
-<input type="search" placeholder="Chercher un Amoose" name="rechercher">
+<input id="search"type="search" placeholder="Chercher un Amoose" name="rechercher">
 </div>
 
 </header>
 
 <main>
 
-<div id="mur">
+<div id="mur-container">
+    
+<div id="post1">
+    <div id="statut">
+     <h1>THEO CREMERS</h1>
+    
+    <p>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard Le Lorem Ipsum est simplement Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum </p>
+    </div>
+    
+    <div id="Commentaire">
+    <h1>Zelia tiran</h1>
+    
+    <p>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard Le Lorem Ipsum est simplement Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum </p>
+    </div>
+    <div id="ajoutcommentaire">
+    <p>Ajouter un commentaire </p>
+    </div>
+    
+    
+</div>
+    
+    <div id="post2">
     <div id="statut">
     <h1>THEO CREMERS</h1>
     
     <p>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard Le Lorem Ipsum est simplement Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum </p>
     </div>
     
+    <div id="Commentaire">
+    <h1>Zelia tiran</h1>
+    
+    <p>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard Le Lorem Ipsum est simplement Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum </p>
+    </div>
+    <div id="ajoutcommentaire">
+    <p>Ajouter un commentaire </p>
+    </div>
+    
+    
+    </div>
+    
+    
+    
     
     
     
 </div>
+
+
+
+
+
+
+
 
 </main>
 

@@ -1,12 +1,60 @@
-#header{
-    background-color: #1B998B;
-    padding: 50px;
+body{
+    font-weight: 400; 
+    padding: 0;
+    margin: 0;
 }
-#mur {
-    background-color: papayawhip;
-   
+
+header{
+    background-color: #1B998B;
+    padding: 20px;
+}
+
+#header {
+    display: flex;
+    justify-content: space-between;
+}
+
+#search{
+    
+}
+
+#mur-container {
+    background-color: #F7F7FF;
+    padding-top: 15px;
+    margin-top: 50px;
+    margin-left: 150px; 
+    margin-right: 150px; 
+    padding-bottom: 50px;
 }
 #statut{
-        background-color: white;
+    background-color: white;
     color: black;
+    margin-top: 50px;
+    margin-left: 150px;
+    margin-right: 150px;
+}
+
+#Commentaire{
+    background-color: #29335C;
+    color: white;
+    margin-top: 0px;
+    margin-left: 250px;
+    margin-right: 150px;
+}
+
+h2{
+    text-align: center; 
+}
+
+p, h1 {
+    margin-top: 0px;
+    margin-left: 80px;
+    margin-right: 30px;
+}
+
+#ajoutcommentaire{
+    background-color: white;
+    text-align: end ; 
+    margin-right: 150px;
+    margin-left: 850px;
 }
