@@ -58,8 +58,7 @@ if (isset($_SESSION['info'])) {
             if (isset($_GET["action"])) {
                 $action = $_GET["action"];
             } else {
-                $action = "accueil
-                ";
+                $action = "accueil";
             }
 
             // Est ce que cette action existe dans la liste des actions

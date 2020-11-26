@@ -6,6 +6,8 @@ $listeDesActions = array(
     "connexion" => "traitement/connexion.php",
     "deconnexion" => "traitement/deconnexion.php",
     "mur" => "vues/mur.php",
-    "inscription" => "signin.php"
+    "signin" => "vues/signin.php",
+    "accueil" => "vues/accueil.php",
+    "inscription" => "/traitement/inscription.php"
 
 );
