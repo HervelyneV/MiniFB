@@ -1,16 +1,35 @@
-<link rel="stylesheet" href="../css/mur_style.css">
-
+<link rel="stylesheet" href="./css/mur_style.css">
+<script src="./js/mur.js"></script>
 
 <header>
 <div id="header">
     
-<img src="./css/src/Logo_moose.png" alt="LOGO DU SITE" width="70px" >
-<img src="./css/src/home.png" alt="ICONE HOME" width="60px">
-<img src="./css/src/profil.png" alt="ICONE PROFIL" width="100px">
-<img src="./css/src/settings" alt="ICONE PARAMETRE" width="60px">
-<a href="index.php?action=deconnexion">Déconnexion</a>
-
-<input id="search"type="search" placeholder="Chercher un Amoose" name="rechercher">
+  <img src="./css/src/Logo_moose.png" alt="LOGO DU SITE" width="70px" >
+  <img src="./css/src/home.png" alt="ICONE HOME" width="60px">
+  <img src="./css/src/profil.png" alt="ICONE PROFIL" width="100px">
+    
+<ul>
+  <li><input id="searchbox"type="search" placeholder="Chercher un Amoose" name="rechercher">
+    <div id="resultat-recherche">
+       <div id="box_user">
+        <a href="#">
+        <img src="./css/src/moose.png" width="20px">
+         Zelia tiran <br>
+         zelia@gmail.com
+           </a>
+        </div>
+        <div id="box_user">
+        <a href="#">
+        <img src="./css/src/moose.png" width="20px">
+         Zelia tiran <br>
+         zelia@gmail.com
+           </a>
+        </div>
+      
+      </div>    
+    </li>
+</ul>
+    <a href="index.php?action=deconnexion">Déconnexion</a>
 </div>
 
 </header>
@@ -82,39 +101,6 @@
     </div>
     
     
-    
-    
-    
-    
-</div>
-
-
-
-
-
-
-
-
-</main>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <?php
