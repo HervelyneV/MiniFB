@@ -1,72 +1,76 @@
 <?php
+$valid = true; //Vérification du formulaire
+$erreur = "";
 
-session_start();
-
-include('../config/bd.php');
-
-//Si session deja ok, on ne retourne plus sur signin
-if(isset($_SESSION['id'])){
-    header('Location: index.php?action=login');
-    exit;
-}
-
-//Si la variable $_POST est remplie, on traite le form
-if(!empty($_POST)){
-    extract($_POST);
-    $valid = true; 
-
-    // On prend le bon formulaire grâce au "name" de la balise "input"
-    if(isset($_POST['inscription'])){
+if(isset($_POST) && count($_POST)!=0){
+    /*echo "<pre>";
+    print_r($_POST);
+    echo "</pre>";*/
     
-        $mail = htmlentities(strtolower(trim($mail)));
-        $login = htmlentities(trim($login));
-        $password = trim($password);
-
-        //verif
-        if(empty($mail)){
-            $valid = false;
-            $mailnotok = "Le mail ne peux pas être vide";
-        }
-
-        elseif(!preg_match("(^[-\w\.]+@([-a-z0-9]+\.)+[a-z]{2,3}$)i", $mail)){
-            $valid = false;
-            $mailnotok = "Le mail n'est pas valide";
-        }
-        
-        else{
-            $dispo_mail = $sql->query("SELECT email FROM user WHERE mail = ?",
-            array($mail));
-    
-            $dispo_mail = $dispo_mail->fetch();
-    
-            if ($dispo_mail['email'] <> ""){
-                $valid = false;
-                $mailnotok = "Ce mail existe déjà";
-            }
-        }
-
-        
-            if(empty($login)){
-                $valid=false;
-                $loginnotok = "le login ne peux pas être vide";
-            }
-
-            if(empty($password)){
-                $valid=false;
-                $passwordnotok = "le mot de passe ne peux pas être vide";
-            }
-    
-            if($valid){
-                $password = crypt($password, '$6$rounds=5000$ACNKFOjdge*u052$');
-
-                //insertion données dans la table 
-                $sql->insert("INSERT INTO user (email, login, password) VALUES (?, ?, ?)",
-                array($mail, $login, $password));
-    
-                header('Location: index.php?action=mur');
-                exit;
-            }
+    //Vérification du nom et prénom
+    if(!isset($_POST["login"])){
+        $valid = false;
+        $erreur = $erreur . " Données invalides (identifiant).";
     }
-}
-?>   
     
+    //Vérification du e-mail
+    if(!isset($_POST["mail"]) || filter_var($_POST["mail"], FILTER_VALIDATE_EMAIL)==false){
+        $valid = false;
+        $error = $error . " Données invalides (e-mail).";
+    }
+    
+    //Vérification du mot de passe
+    if(!isset($_POST["password"])){
+        $valid = false;
+        $error = $error . " Données invalides (mots de passe).";
+    }
+    
+    if($valid == true){
+   
+        $sql = "SELECT * FROM user WHERE email=?";
+        
+        // Etape 1  : preparation
+        $q = $pdo->prepare($sql);
+
+        // Etape 2 : execution
+        $q->execute(array(
+            $_POST["mail"]
+        ));
+        
+        $line=$q->fetch();
+        
+        if($line != false){
+            
+            //Redirection si compte déjà existant
+            echo "Compte déjà existant. Redirection vers le formulaire d'inscription.";
+            header("location: index.php?action=login");
+            
+        }else{
+            
+            //Création du compte si non existant
+            $sql = "INSERT INTO user(login, email, mdp) VALUES(? , ? , PASSWORD(?))";
+
+            // Etape 1  : preparation
+            $q = $pdo->prepare($sql);
+
+            // Etape 2 : execution : 7 paramètres dans la requêtes !!
+            $q->execute(array(
+                $_POST["login"],
+                $_POST["mail"],
+                $_POST["password"]
+            ));
+
+            echo "Formulaire validé et enregistré dans la base de donnée.";
+            header("location: index.php?action=accueil");
+            
+        }
+        
+    }else{
+        echo "<b>Erreur dans la validation du formulaire ! Erreur(s) :$error</b><br/>";
+       header("location: index.php?action=signin");
+  }
+    
+}else{
+    echo "Erreur !!! Aucun formulaire a été envoyé. Veuillez recommencer.";
+    header("location: index.php?action=connexion_inscription");
+}
