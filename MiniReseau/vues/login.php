@@ -9,14 +9,14 @@
             <br>
             <input id="envoyer_input" type="submit" name="Connexion" value="Connexion"/>
         </form>
-       <a id="inscristoi" href="index.php?action=signin">Pas encore de compte? Rejoins nous !</a>
+       <a href="index.php?action=signin">Pas encore de compte? Rejoins nous !</a>
     </div>
     
     <div id="right_moose">
         <h1>Moose</h1>
         <div>
             <p>Content de te revoir !</p>
-            <img src="css/src/moose.png">
+            <img src="../css/src/moose.png">
         </div>
     </div>
     
