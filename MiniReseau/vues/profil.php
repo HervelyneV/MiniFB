@@ -7,7 +7,7 @@
             <img src="./css/src/home.png" alt="ICONE HOME" width="60px">
             <div>
                 <p>Nom<br>Prénom</p>
-                <p>Photo</p>
+                <p>Avatar</p>
             </div> 
         </div>
          
