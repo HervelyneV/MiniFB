@@ -9,6 +9,8 @@ $listeDesActions = array(
     "signin" => "vues/signin.php",
     "accueil" => "vues/accueil.php",
     "inscription" => "traitement/inscription.php",
-    "ajoutpost" => "traitement/ajoutpost.php"
-    "ajouter-post" => "traitement/ajouter-post.php",
+    "ajouterpost" => "traitement/ajoutpost.php",
     "profil" => "vues/profil.php"
+);
+
+?>

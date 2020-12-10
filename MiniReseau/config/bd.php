@@ -2,7 +2,7 @@
 // Script login.php utilisé pour la connexion à la BD
 
 
-$host = "localhost"; // le chemin vers le serveur (localhost dans 99% des cas)
+$host = "localhost:3308"; // le chemin vers le serveur (localhost dans 99% des cas)
 
 $db = "moose_bdd";
 // A l IUT, 3 possibilité prenomnom prenomnom1...

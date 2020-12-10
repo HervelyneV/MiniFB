@@ -52,3 +52,8 @@ CREATE TABLE IF NOT EXISTS `user` (
 INSERT INTO `user` (`id`, `login`, `mdp`, `email`, `remember`, `avatar`) VALUES
 (1, 'gilles', '*A4B6157319038724E3560894F7F932C8886EBFCF', 'gilles@toto.fr', '', '');
 COMMIT;
+
+
+----
+
+
