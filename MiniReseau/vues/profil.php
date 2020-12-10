@@ -4,11 +4,12 @@
         <div>
             <p><i>De retour chez soi !</i></p>
             <img src="./css/src/igloo.PNG">
-            <img src="./css/src/home.png" alt="ICONE HOME" width="60px">
+            <img src="./css/src/home.png" alt="ICONE HOME" width="70px">
             <div>
                 <p>Nom<br>Prénom</p>
                 <p>Avatar</p>
             </div> 
+                <a href="index.php?action=deconnexion">Déconnexion</a>
         </div>
          
     </div>

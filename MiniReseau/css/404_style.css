@@ -7,19 +7,21 @@ section{
     background-color: #1B998B;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     border-radius: 50px;
     width: 954px;
     height: 588px;
     font-family: "Roboto";
     margin-top: 100px;
+    position: relative;
 }
 
 .error h1{
     font-family: "moose";
     color: #F4AFAB;
     font-size: 800%;
-    margin-top: 25px;
+    margin: 0;
 }
 
 .error h2{
@@ -39,4 +41,7 @@ section{
 
 .error img{
     width: 20%;
+    position: absolute;
+    top: 320px;
+    left: 730px;
 }
