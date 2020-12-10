@@ -6,7 +6,7 @@
     
   <img src="./css/src/Logo_moose.png" alt="LOGO DU SITE" width="70px" >
   <img src="./css/src/home.png" alt="ICONE HOME" width="60px">
-  <img src="./css/src/profil.png" alt="ICONE PROFIL" width="100px">
+  <a href="index.php?action=profil&id=<?php echo $_SESSION['id']?>"><img src="./css/src/profil.png" alt="ICONE PROFIL" width="100px"></a>
     
 <ul>
   <li><input id="searchbox"type="search" placeholder="Chercher un Amoose" name="rechercher">

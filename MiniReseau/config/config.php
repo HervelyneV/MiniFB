@@ -1,6 +1,6 @@
 <?php
 define("HOST", "localhost");
-define("USER", "audemard");
+define("USER", "root");
 define("DB", "miniappli");
-define("PASSWORD", "aud123");
+define("PASSWORD", "");
 

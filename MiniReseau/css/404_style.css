@@ -1,0 +1,47 @@
+section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.error{
+    background-color: #1B998B;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    width: 954px;
+    height: 588px;
+    font-family: "Roboto";
+    margin-top: 100px;
+    position: relative;
+}
+
+.error h1{
+    font-family: "moose";
+    color: #F4AFAB;
+    font-size: 800%;
+    margin: 0;
+}
+
+.error h2{
+    color: white;
+    font-size: 300%;
+}
+
+.error a{
+    color: white;
+    font-size: 250%;
+}
+.error p{
+    color: white;
+    font-size: 150%;
+    direction: rtl;
+}
+
+.error img{
+    width: 20%;
+    position: absolute;
+    top: 320px;
+    left: 730px;
+}

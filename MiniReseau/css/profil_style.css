@@ -1,0 +1,39 @@
+.profil-page{
+    font-family: "Roboto";
+}
+
+.header-profil{
+    background-color: #1B998B;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.header-profil div img{
+    width: 7%;
+}
+
+.header-profil i{
+    color: white;
+}
+
+.header-profil p{
+    color: white;
+}
+
+.header-profil a{
+    color: #F4AFAB;
+    text-decoration: none;
+}
+
+.amis{
+    background-color: #29335C;
+    width: 400px;
+    margin-left: 100px;
+    margin-top: 50px;
+}
+
+.amis h1{
+    color: white;
+    text-decoration: underline;
+}
