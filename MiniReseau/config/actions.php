@@ -8,6 +8,7 @@ $listeDesActions = array(
     "mur" => "vues/mur.php",
     "signin" => "vues/signin.php",
     "accueil" => "vues/accueil.php",
-    "inscription" => "traitement/inscription.php"
+    "inscription" => "traitement/inscription.php",
+    "ajoutpost" => "traitement/ajoutpost.php"
 
 );
