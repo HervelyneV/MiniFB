@@ -86,7 +86,7 @@
                     
                     if($ok == false){
                 ?>
-                    <div id="message-autorisation">
+                    <div id="message_ok">
                         <p>Vous n'êtes pas encore amoose</p>
                         <a href="index.php?action=demande&id=<?php echo $_GET["id_profil"]; ?>" id="demande_ami_lien">Faire une demande d'amoose</a>
                     </div>
@@ -94,16 +94,16 @@
                     }else{
                         if($ami == false){
                 ?>
-                            <div id="message-autorisation">
+                            <div id="message_ok">
                                 <p>Vous n'êtes pas amoose. Dommage!</p>
                             </div>
                 <?php
                         }else{
                 ?>        
                 
-                <div id="ecrit-post">
+                <div id="ecrit_post">
                     <form action="index.php?action=ajouterpost" method="post">
-                        <textarea id="content" name="content" placeholder="Écrivez votre poste ici..." required></textarea>
+                        <textarea id="content" name="content" placeholder="Racontez-nous vos histoire les plus dingues..." required></textarea>
                         <?php
                             if($line["id"] != $_SESSION["id"]){
                                 echo "<input type='hidden' name='idAmi' value='".$line['id']."' />";
@@ -112,12 +112,12 @@
                         <input type="submit" value="Envoyer">
                     </form>
                 </div>
-                <div id="profil-amis">
-                    <h3 id="amis-titre">Mes amis</h3>
+                <div id="profil_amis">
+                    <h3 id="amis_title">Mes amis</h3>
                     <?php
                     if($line["id"] == $_SESSION["id"]){
                         //Liste d'envoi d'amis
-                        $sql_envoi = "SELECT users.* FROM users INNER JOIN friends ON users.id=idUser2 AND state='attente' AND idUser1=? ORDER BY users.family_name, user_name";
+                        $sql_envoi = "SELECT user.* FROM users INNER JOIN lien ON user.id=idUtilisateur2 AND etat='attente' AND idUtilisateur1=? ORDER BY user.login";
 
                         $q2 = $pdo->prepare($sql_envoi);
 
@@ -128,10 +128,9 @@
                             print_r($line2);
                             echo "</pre>";*/
                             ?>
-                            <div class="carte-ami">
-                                <img class="photo-profil-ami" src="images/img_profil.png" alt="Photo_de_profil_de_<?php echo $line2["family_name"]."_".$line2["user_name"]; ?>" />
-                                <span class="nom-ami"><?php echo $line2["family_name"]." ".$line2["user_name"]; ?></span>
-                                <span class="status-ami">Demande envoyée</span>
+                            <div class="voir_ami">
+                                <span class="login_ami"><?php echo $line["login"]?></span>
+                                <span class="etat_ami">Demande envoyée</span>
                             </div>
                             <?php
                         }                  
@@ -140,7 +139,7 @@
                     <?php
                     if($line["id"] == $_SESSION["id"]){
                         //Liste de demande d'amis
-                        $sql_demande = "SELECT users.* FROM users WHERE id IN(SELECT idUser1 FROM friends WHERE idUser2=? AND state='attente') ORDER BY users.family_name, user_name";
+                        $sql_demande = "SELECT user.* FROM user WHERE id IN(SELECT idUtilisateur1 FROM lien WHERE idUtilisateur2=? AND etat='attente') ORDER BY user.login";
 
                         $q3 = $pdo->prepare($sql_demande);
 
@@ -151,10 +150,9 @@
                             print_r($line3);
                             echo "</pre>";*/
                             ?>
-                            <div class="carte-ami">
-                                <img class="photo-profil-ami" src="images/img_profil.png" alt="Photo_de_profil_de_<?php echo $line3["family_name"]."_".$line3["user_name"]; ?>" />
-                                <span class="nom-ami"><?php echo $line3["family_name"]." ".$line3["user_name"]; ?></span>
-                                <span class="status-ami">Demande reçue</span>
+                            <div class="voir_ami">
+                                <span class="ami_name"><?php echo $line3["login"]; ?></span>
+                                <span class="etat_ami">Demande reçue</span>
                                 <a class="bouton-accept" href="index.php?action=accept&id=<?php echo $line3["id"]; ?>">Accepter</a>
                                 <a class="bouton-reject" href="index.php?action=reject&id=<?php echo $line3["id"]; ?>">Refuser</a>
                             </div>
@@ -164,7 +162,7 @@
                     ?>
                     <?php
                     //Liste d'amis confirmés
-                    $sql_amis = "SELECT * FROM users WHERE id IN ( SELECT users.id FROM users INNER JOIN friends ON idUser1=users.id AND state='ami' AND idUser2=? UNION SELECT users.id FROM users INNER JOIN friends ON idUser2=users.id AND state='ami' AND idUser1=?) ORDER BY users.family_name, user_name";
+                    $sql_amis = "SELECT * FROM user WHERE id IN ( SELECT user.id FROM user INNER JOIN lien ON idUtilisateur1=user.id AND etat='ami' AND idUtilisateur2=? UNION SELECT user.id FROM user INNER JOIN lien ON idUtilisateur2=users.id AND etat='ami' AND idUtilisateur1=?) ORDER BY user.login";
                 
                     $q4 = $pdo->prepare($sql_amis);
                     
@@ -180,26 +178,20 @@
                         print_r($line4);
                         echo "</pre>";*/
                         ?>
-                        <div class="carte-ami">
-                            <img class="photo-profil-ami" src="images/img_profil.png" alt="Photo_de_profil_de_<?php echo $line4["family_name"]."_".$line4["user_name"]; ?>" />
-                            <span class="nom-ami"><?php echo $line4["family_name"]." ".$line4["user_name"]; ?></span>
-                            <span class="status-ami">Vous êtes amis</span>
+                        <div class="voir_ami">
+                            <span class="ami_name"><?php echo $line4["login"]; ?></span>
+                            <span class="etat_ami">Vous êtes amis</span>
                         </div>
                         <?php
                     }                  
                     
                     ?>
-                    <!--<div class="carte-ami">
-                        <img class="photo-profil-ami" src="images/img_profil.png" alt="Photo_de_profil_de_#" />
-                        <span class="nom-ami">Prénom Nom</span>
-                        <span class="status-ami">Vous êtes déjà ami</span>
-                    </div>-->
                 </div>
-                <div id="profil-post">
-                    <h3 id="post-titre">Mes posts</h3>
+                <div id="profil_post">
+                    <h3 id="title_profil_post">Mes posts</h3>
                     <?php
                         //Liste des posts
-                        $sql_posts = "SELECT posts.*, users.*, posts.id AS IDPost FROM posts JOIN users ON users.id=posts.idAmi WHERE posts.idAuteur=? OR posts.idAmi=? ORDER BY posts.datePost DESC";
+                        $sql_posts = "SELECT ecrit.*, user.*, ecrit.id AS ID FROM ecrit JOIN user ON user.id=ecrit.idAmi WHERE ecrit.idAuteur=? OR ecrit.idAmi=? ORDER BY ecrit.dateEcrit DESC";
 
                         $q_posts = $pdo->prepare($sql_posts);
                         
@@ -210,36 +202,33 @@
                             var_dump($line_posts);
                             echo "</pre>";*/
                     ?>
-                    <div class="post-perso">
-                        <div class="main-post">
-                            <div class="photo-profil-auteur">
-                                <img class="photo-auteur" src="images/img_profil.png" alt="Photo_de_profil_de_<?php echo $line_posts["family_name"]."_".$line_posts["user_name"]; ?>" />
-                            </div>
-                            <div class="text-post">
-                                <p class="nom-auteur"><?php echo $line_posts["family_name"]." ".$line_posts["user_name"]; ?></p>
-                                <p class="titre-auteur"><?php echo $line_posts["title"]; ?></p>
-                                <p class="post-auteur"><?php echo $line_posts["content"]; ?></p>
-                                <p class="date-post">Posté par <?php echo $line_posts["family_name"]." ".$line_posts["user_name"]; ?> le <?php echo $line_posts["datePost"]; ?></p>
+                    <div class="post_perso">
+                        <div class="main_post">
+                            <div class="ecrit_post">
+                                <p class="login_auteur"><?php echo $line_ecrit["login"]; ?></p>
+                                <p class="title_auteur"><?php echo $line_ecrit["titre"]; ?></p>
+                                <p class="post_auteur"><?php echo $line_ecrit["contenu"]; ?></p>
+                                <p class="date_post">Posté par <?php echo $line_posts["login"]; ?> le <?php echo $line_posts["dateEcrit"]; ?></p>
                             </div>
                         </div>
-                        <div class="commentaire-post">
-                            <h4 class="titre-commentaire">Commentaires</h4>
+                        <div class="commentaire_post">
+                            <h4 class="conmmentaire_title">Commentaires</h4>
                             
                             <div id="ecrit-commentaire">
                                 <form action="index.php?action=ajoutCommentaire" method="post">
-                                    <textarea id="content" name="content" placeholder="Écrivez votre poste ici..." required></textarea>
-                                    <input type="hidden" name="idPost" value="<?php echo $line_posts["IDPost"]; ?>" />
+                                    <textarea id="contenu" name="contenu" placeholder="Commentez ici..." required></textarea>
+                                    <input type="hidden" name="idPost" value="<?php echo $line_commentaire["idPost"]; ?>" />
                                     <input type="submit" value="Envoyer">
                                 </form>
                             </div>
                             
                             <?php
                                 //Liste des posts
-                                $sql_comments = "SELECT comments.*, users.* FROM comments JOIN users ON users.id=comments.idUser WHERE comments.idPost=? ORDER BY comments.dateComment DESC";
+                                $sql_comments = "SELECT commentaire.*, user.* FROM commentaire JOIN user ON user.id=commentaire.idUser WHERE commentaire.idPost=? ORDER BY commentaire.dateCommentaire DESC";
 
                                 $q_comments = $pdo->prepare($sql_comments);
 
-                                $q_comments->execute(array($line_posts["IDPost"]));
+                                $q_comments->execute(array($line_posts["idPost"]));
 
                                 while($line_comments = $q_comments->fetch()){
                                     /*echo "<pre>";
@@ -247,69 +236,17 @@
                                     echo "</pre>";*/
                             ?>
                             <div class="commentaire">
-                                <div class="photo-commentateur">
-                                    <img class="photo-profil-commentateur" src="images/img_profil.png" alt="Photo_de_profil_de_<?php echo $line_comments["family_name"]."_".$line_comments["user_name"]; ?>" />
-                                </div>
-                                <div class="main-commentaire">
-                                    <p class="commentaire-commentateur"><?php echo $line_comments["content"]; ?></p>
-                                    <p class="date-commentaire">Posté par <?php echo $line_comments["family_name"]." ".$line_comments["user_name"]; ?> le <?php echo $line_comments["dateComment"]; ?></p>
+                                <div class="main_commentaire">
+                                    <p class="commentaire_user"><?php echo $line_commentaire["contenu"]; ?></p>
+                                    <p class="date_commentaire">Posté par <?php echo $line_commentaire["login"]; ?> le <?php echo $line_comments["dateCommentaire"]; ?></p>
                                 </div>
                             </div>
                             <?php
                                 }
-                            ?>
-                            <!--<div class="commentaire">
-                                <div class="photo-commentateur">
-                                    <img class="photo-profil-commentateur" src="images/img_profil.png" alt="Photo_de_profil_de_#" />
-                                </div>
-                                <div class="main-commentaire">
-                                    <p class="commentaire-commentateur">Lorem ipsum aaaaaaaaaaa</p>
-                                    <p class="date-commentaire">Posté par PRENOM NOM le DATE à HEURE</p>
-                                </div>
-                            </div>-->
-                        </div>                            
-                    </div>
-                    
-                    <?php
+                  
                         }
                 }
-                    ?>                    
-                    
-                    <!--<div class="post-perso">
-                        <div class="main-post">
-                            <div class="photo-profil-auteur">
-                                <img class="photo-auteur" src="images/img_profil.png" alt="Photo_de_profil_de_#" />
-                            </div>
-                            <div class="text-post">
-                                <p class="nom-auteur">PRENOM NOM</p>
-                                <p class="post-auteur">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et enim neque. Cras tincidunt hendrerit dignissim. Integer et ligula porttitor, pharetra erat id, lacinia justo. Vivamus ipsum sapien, auctor quis lectus eget, volutpat feugiat nisl. Nam consectetur, mauris vitae aliquam sagittis, justo velit interdum felis, dapibus lacinia velit augue sit amet odio. Fusce bibendum congue leo sed vestibulum. Vivamus mauris quam, suscipit sed porta bibendum, ultricies eget sapien. Phasellus id tempus lorem. Morbi id gravida urna, eget semper leo. Donec eu volutpat enim.</p>
-                                <p class="date-post">Posté par PRENOM NOM le DATE à HEURE</p>
-                            </div>
-                        </div>
-                        <div class="commentaire-post">
-                            <h4 class="titre-commentaire">Commentaires</h4>
-                            <div class="commentaire">
-                                <div class="photo-commentateur">
-                                    <img class="photo-profil-commentateur" src="images/img_profil.png" alt="Photo_de_profil_de_#" />
-                                </div>
-                                <div class="main-commentaire">
-                                    <p class="commentaire-commentateur">Lorem ipsum aaaaaaaaaaa</p>
-                                    <p class="date-commentaire">Posté par PRENOM NOM le DATE à HEURE</p>
-                                </div>
-                            </div>
-                            <div class="commentaire">
-                                <div class="photo-commentateur">
-                                    <img class="photo-profil-commentateur" src="images/img_profil.png" alt="Photo_de_profil_de_#" />
-                                </div>
-                                <div class="main-commentaire">
-                                    <p class="commentaire-commentateur">Lorem ipsum aaaaaaaaaaa</p>
-                                    <p class="date-commentaire">Posté par PRENOM NOM le DATE à HEURE</p>
-                                </div>
-                            </div>
-                        </div>                            
-                    </div>-->
-                </div>
-                <?php
+                   
                             
                         }
 
