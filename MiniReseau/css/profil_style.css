@@ -1,15 +1,15 @@
-.profil-page{
+.accueil{
     font-family: "Roboto";
 }
 
-.header-profil{
+#profil{
     background-color: #1B998B;
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
-.header-profil div img{
+#profil div img{
     width: 7%;
 }
 

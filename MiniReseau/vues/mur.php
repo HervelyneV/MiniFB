@@ -1,6 +1,10 @@
 <link rel="stylesheet" href="./css/mur_style.css">
 <script src="./js/mur.js"></script>
 
+    <?php
+include("./config/bd.php"); 
+?>
+
 <header>
 <div id="header">
     
@@ -9,7 +13,7 @@
     <img src="./css/src/profil.png" alt="ICONE PROFIL" width="100px"></a>
     
 <ul>
-  <li><input id="searchbox"type="search" placeholder="Chercher un Amoose" name="rechercher">
+  <li><input id="searchbox"type="search" placeholder="Chercher un Amoose" name="rep">
     <div id="resultat-recherche">
        <div id="box_user">
         <a href="#">
@@ -36,14 +40,11 @@
 
 <main>
     
-    <?php
-include("./config/bd.php"); 
-?>
 
-    <form action="index.php?action=mur" method="get">
+    <!--<form action="index.php?action=mur" method="get">
     
     <input type="search"  id="searchbox" name="rep" placeholder="rechercher un amoose"/>
-    <input type="submit" value="valider"/>
+    <input type="submit" value="valider"/>--!>
     
 <?php
         

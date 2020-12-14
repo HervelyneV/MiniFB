@@ -1,3 +1,11 @@
+<?php
+    //echo "Page d'accueil.";
+    if(!(isset($_SESSION["id"])) || !(isset($_SESSION["login"]))){
+            //message("Création de la session");
+            header('Location: index.php?action=accueil');
+    }
+?>
+
 <div class="accueil">
         <div id="profil">
             <?php echo $_SESSION["login"]; ?>
@@ -16,7 +24,7 @@
                          var_dump($line);
                          echo "</pre>";*/
                  ?>
-                 <li><a href="index.php?action=profil&id_profil=<?php echo $line["id"]; ?>" class="lien_ami"><?php echo $line["login"];?></a></li>
+                 <li><a href="index.php?action=profil&id=<?php echo $line["id"]; ?>" class="lien_ami"><?php echo $line["login"];?></a></li>
                  <?php
                      }
                  ?>
@@ -33,12 +41,12 @@
                 
                 $q = $pdo->prepare($sql);               
                 
-                $q->execute(array($_GET["id_profil"]));
+                $q->execute(array($_GET["id"]));
             
                 $line = $q->fetch();
-                /*echo "<pre>";
+                echo "<pre>";
                 print_r($line);
-                echo "</pre>";*/
+                echo "</pre>";
             
                 if(!$line){
                     header("Location: index.php?action=accueil");
@@ -56,14 +64,14 @@
                     $ok = false;
                     $ami = false;
                     
-                    if($_GET["id_profil"]==$_SESSION["id"]){
+                    if($_GET["id"]==$_SESSION["id"]){
                         $ok = true;
                     }else{
                         // Verifions si on est amis avec cette personne
                         $sql_verif = "SELECT * FROM lien WHERE (idUtilisateur1=? AND idUtilisateur2=?) OR (idUtilisateur1=? AND idUtilisateur2=?)";
                         $q_verif = $pdo->prepare($sql_verif);
 
-                        $q_verif->execute(array($_GET["id_profil"], $_SESSION["id"], $_SESSION["id"], $_GET["id_profil"]));
+                        $q_verif->execute(array($_GET["id"], $_SESSION["id"], $_SESSION["id"], $_GET["id"]));
 
                         $line_verif = $q_verif->fetch();
                         /*echo "<pre>";
@@ -88,7 +96,7 @@
                 ?>
                     <div id="message_ok">
                         <p>Vous n'êtes pas encore amoose</p>
-                        <a href="index.php?action=demande&id=<?php echo $_GET["id_profil"]; ?>" id="demande_ami_lien">Faire une demande d'amoose</a>
+                        <a href="index.php?action=demande&id=<?php echo $_GET["id"]; ?>" id="demande_ami_lien">Faire une demande d'amoose</a>
                     </div>
                 <?php
                     }else{
@@ -195,7 +203,7 @@
 
                         $q_posts = $pdo->prepare($sql_posts);
                         
-                        $q_posts->execute(array($_GET["id_profil"], $_GET["id_profil"]));
+                        $q_posts->execute(array($_GET["id"], $_GET["id"]));
                         
                         while($line_posts = $q_posts->fetch()){
                             /*echo "<pre>";
@@ -256,10 +264,10 @@
             </div>
         </div>
         <div id="copyright">
-            <a id="lien-accueil" href="index.php?action=accueil"><img id="logo" src="images/logo.png" alt="Logo_Wolface" /></a>
+            <a id="lien_accueil" href="index.php?action=accueil"><img id="logo" src="images/logo.png" alt="Logo_moos" /></a>
             <p id="copyright-text">
                 Copyright ©2020<br/>
-                Tout droits réservés à Wolface
+                Tout droits réservés à Moose
             </p>
         </div>
     </div>
