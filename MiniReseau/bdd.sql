@@ -17,6 +17,7 @@ CREATE TABLE `ecrit` (
 
 --
 
+INSERT INTO `ecrit` (`id`, `titre`, `contenu`, `dateEcrit`, `image`, `idAuteur`, `idAmi`) VALUES(1, 'Salut', 'Ceci un test de post... Bonjour.','02/12/20 à 20h05', '',1,1);
 -- Structure de la table `comments`
 --
 
@@ -52,6 +53,9 @@ CREATE TABLE `lien` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+
+INSERT INTO `lien` (`id`, `idUtilisateur1`, `idUtilisateur2`, `etat`) VALUES
+(1, 5, 1, 'ami');
 
 -- une donnée dans la table ecrit
 

@@ -6,32 +6,35 @@
     }
 ?>
 
-<div class="accueil">
-        <div id="profil">
-            <?php echo $_SESSION["login"]; ?>
+<div class="profil">
+        <div id="profil_top">
+            <img src="./css/src/igloo.png">
+            <p>De retour chez soi!</p>
+            <h2 id="login_title"><?php echo $_SESSION["login"]; ?></h2>
+              <a href="index.php?action=deconnexion" id="lien_deco">Déconnexion</a>
         </div>
-        <div id="liste-amis">
+         <div id="liste_amis">
             <ul>
                 <?php
-                     $sql = "SELECT * FROM user WHERE id IN ( SELECT user.id FROM user INNER JOIN lien ON idUtilisateur1=user.id AND etat='ami' AND idUtilisateur2=? UNION SELECT user.id FROM user INNER JOIN lien ON idUtilisateur2=user.id AND etat='ami' AND idUtilisateur1=?) LIMIT 0, 5";
+                     $sql ="SELECT * FROM user WHERE id IN ( SELECT user.id FROM user INNER JOIN lien ON idUtilisateur1=user.id AND etat='amis' AND idUtilisateur2=? UNION SELECT user.id FROM user INNER JOIN lien ON idUtilisateur2=user.id AND etat='amis' AND idUtilisateur1=?)";
 
                      $q = $pdo->prepare($sql);
 
                      $q->execute(array($_SESSION["id"], $_SESSION["id"]));
 
                      while($line = $q->fetch()){
-                         /*echo "<pre>";
-                         var_dump($line);
-                         echo "</pre>";*/
+    
                  ?>
-                 <li><a href="index.php?action=profil&id=<?php echo $line["id"]; ?>" class="lien_ami"><?php echo $line["login"];?></a></li>
+                
+                <li><a href="index.php?action=profil&id=<?php echo $line["id"]; ?>" class="lien_ami"><?php echo $line["login"];?></a></li>
+             
                  <?php
                      }
                  ?>
             </ul>
         </div>
 
-        <a href="index.php?action=deconnexion" id="lien_deco">Déconnexion</a>
+      
     </div>
 
     <div id="profil_content">
@@ -44,16 +47,14 @@
                 $q->execute(array($_GET["id"]));
             
                 $line = $q->fetch();
-                echo "<pre>";
-                print_r($line);
-                echo "</pre>";
+
             
                 if(!$line){
                     header("Location: index.php?action=accueil");
                 }else{
                 
             ?>
-            <div id="profil">
+           <div id="profil">
                 <div id="profil_infos">
                         <span id="profil_login"><?php  echo ucwords($line["login"]); ?></span>
                     </div>
@@ -74,15 +75,15 @@
                         $q_verif->execute(array($_GET["id"], $_SESSION["id"], $_SESSION["id"], $_GET["id"]));
 
                         $line_verif = $q_verif->fetch();
-                        /*echo "<pre>";
+                        echo "<pre>";
                         print_r($line_verif);
-                        echo "</pre>";*/
+                        echo "</pre>";
 
                         if(!$line_verif){
                             $ok = false;
                         }else{
                             $ok = true;   
-                            if($line_verif["etat"]=="ami"){
+                            if($line_verif["etat"]=="amis"){
                                 $ami = true;
                             }else{
                                 $ami = false;
@@ -90,13 +91,13 @@
                         }                    
                     }
                     
-                    //var_dump($ok);
+
                     
                     if($ok == false){
                 ?>
                     <div id="message_ok">
                         <p>Vous n'êtes pas encore amoose</p>
-                        <a href="index.php?action=demande&id=<?php echo $_GET["id"]; ?>" id="demande_ami_lien">Faire une demande d'amoose</a>
+                        <a href="index.php?action=demandeAmi&id=<?php echo $_GET["id"]; ?>" id="demande_ami_lien">Faire une demande d'amoose</a>
                     </div>
                 <?php
                     }else{
@@ -263,8 +264,8 @@
                 ?>
             </div>
         </div>
-        <div id="copyright">
-            <a id="lien_accueil" href="index.php?action=accueil"><img id="logo" src="images/logo.png" alt="Logo_moos" /></a>
+        <div id="footer">
+            <a id="lien_accueil" href="index.php?action=accueil"><img id="logo" src="./css/src/Logo_moose.png" alt="Logo_moose" /></a>
             <p id="copyright-text">
                 Copyright ©2020<br/>
                 Tout droits réservés à Moose

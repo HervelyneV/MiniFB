@@ -1,14 +1,52 @@
-.accueil{
+.profil{
     font-family: "Roboto";
 }
 
-#profil{
+#profil_top{
     background-color: #1B998B;
+    padding: 50px;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
+
 }
 
+#profil_top #login_title{
+    position: relative;
+    color: #F4AFAB;
+    font-size: 22pt;
+    top: 20px;
+    left: 400px;
+}
+
+#profil_top img{
+    position: relative;
+     width: 130px;
+}
+
+#profil_top p {
+    position: relative;
+    font-size: 12pt;
+    color: white;
+    font-style: italic;
+    right: 70px;
+    top:20px;
+}
+
+#profil_top a{
+    color: #F4AFAB;
+    font-size: 14pt;
+    position: relative;
+    left: 800px;
+    top: 30px;
+    text-decoration: none;
+    
+    
+}
+#liste_amis{
+    
+    background-color: #29335C;
+   
+    
+}
 #profil div img{
     width: 7%;
 }
@@ -23,11 +61,12 @@
 
 .header-profil a{
     color: #F4AFAB;
+    
     text-decoration: none;
 }
 
 .amis{
-    background-color: #29335C;
+    background-color: ;
     width: 400px;
     margin-left: 100px;
     margin-top: 50px;
@@ -36,4 +75,16 @@
 .amis h1{
     color: white;
     text-decoration: underline;
+}
+
+#footer {
+    display: flex;
+    background-color: #1B998B;
+    justify-content: space-between;
+    padding-top: 10px;
+    color: white;
+}
+#footer img {
+    padding-left: 10px;
+    width: 50px;
 }
