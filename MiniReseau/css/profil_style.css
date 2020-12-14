@@ -9,7 +9,7 @@
 
 }
 
-#profil_top #login_title{
+#profil_top h2{
     position: relative;
     color: #F4AFAB;
     font-size: 22pt;
@@ -44,6 +44,7 @@
 #liste_amis{
     
     background-color: #29335C;
+    
    
     
 }
