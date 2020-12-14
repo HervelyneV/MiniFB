@@ -10,12 +10,9 @@
 }
 
 .header-profil div img{
-    width: 7%;
+    width: 10%;
 }
 
-.header-profil i{
-    color: white;
-}
 
 .header-profil p{
     color: white;
@@ -24,6 +21,12 @@
 .header-profil a{
     color: #F4AFAB;
     text-decoration: none;
+}
+
+.container-profil img{
+    width: 20px;
+    height: 20px;
+    background-color: white;
 }
 
 .amis{
@@ -36,4 +39,17 @@
 .amis h1{
     color: white;
     text-decoration: underline;
+}
+
+.amis h2{
+    color: white;
+}
+
+.container-post{
+    background-color: #F7F7FF;
+    margin-top: 50px;
+}
+
+.container-post h2{
+    color:  #1B998B;
 }

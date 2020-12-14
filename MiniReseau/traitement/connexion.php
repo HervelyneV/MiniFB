@@ -19,7 +19,7 @@ if(isset($_POST["login"]) && isset($_POST['password'])) {
     else {
         $_SESSION['id'] = $line['id'];
         $_SESSION['login'] = $line['login'];
-        header("Location: index.php?action=mur");
+        header("Location: index.php?action=mur&id=".$_SESSION["id"]);
         // sinon on crée les variables de session $_SESSION['id'] et $_SESSION['login'] et on va à la page d'accueil
 
     }

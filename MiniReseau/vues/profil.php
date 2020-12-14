@@ -2,9 +2,8 @@
 <section class="profil-page">
     <div class="header-profil">
         <div>
-            <p><i>De retour chez soi !</i></p>
             <img src="./css/src/igloo.PNG">
-            <img src="./css/src/home.png" alt="ICONE HOME" width="70px">
+            <img src="./css/src/home.png" alt="ICONE HOME">
             <div>
                 <p>Nom<br>Prénom</p>
                 <p>Avatar</p>
@@ -17,7 +16,19 @@
     <div class="container-profil">
         <div class="amis">
             <h1>Amis :</h1>
+                <div>
+                    <img src="" alt="">
+                    <h2>Zelia Tiran</h2>
+                </div>
         <div>
+        <div class="container-post">
+            <div>
+                <img src="" alt="">
+                <h2>Théo Cremers</h2>
+                <p>Yop, les amis ! Comment ça va !</p>
+                <button>Supprimer</button>
+            </div>
+        </div>
     </div>
 
 </section>
