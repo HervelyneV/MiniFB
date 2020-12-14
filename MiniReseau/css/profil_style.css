@@ -1,16 +1,59 @@
-.profil-page{
+.profil{
     font-family: "Roboto";
 }
 
-.header-profil{
+#profil_top{
     background-color: #1B998B;
+    padding: 50px;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
+
 }
 
+#profil_top #login_title{
+    position: relative;
+    color: #F4AFAB;
+    font-size: 22pt;
+    top: 20px;
+    left: 400px;
+}
+
+#profil_top img{
+    position: relative;
+     width: 130px;
+}
+
+#profil_top p {
+    position: relative;
+    font-size: 12pt;
+    color: white;
+    font-style: italic;
+    right: 70px;
+    top:20px;
+}
+
+<<<<<<< HEAD
 .header-profil div img{
     width: 10%;
+=======
+#profil_top a{
+    color: #F4AFAB;
+    font-size: 14pt;
+    position: relative;
+    left: 800px;
+    top: 30px;
+    text-decoration: none;
+    
+    
+}
+#liste_amis{
+    
+    background-color: #29335C;
+   
+    
+}
+#profil div img{
+    width: 7%;
+>>>>>>> 34c25126433a410bdae0d8c46cfcee672a63284b
 }
 
 
@@ -20,6 +63,7 @@
 
 .header-profil a{
     color: #F4AFAB;
+    
     text-decoration: none;
 }
 
@@ -30,7 +74,7 @@
 }
 
 .amis{
-    background-color: #29335C;
+    background-color: ;
     width: 400px;
     margin-left: 100px;
     margin-top: 50px;
@@ -41,6 +85,7 @@
     text-decoration: underline;
 }
 
+<<<<<<< HEAD
 .amis h2{
     color: white;
 }
@@ -52,4 +97,48 @@
 
 .container-post h2{
     color:  #1B998B;
+=======
+#footer {
+    display: flex;
+    background-color: #1B998B;
+    justify-content: space-between;
+    padding-top: 10px;
+    color: white;
+}
+#footer img {
+    padding-left: 10px;
+    width: 50px;
+}
+
+#liste_amis{
+    background-color: #29335C;
+    color  : white;
+    text-decoration: none;
+    padding-top: 15px;
+    margin-top: 50px;
+    margin-left: 40px; 
+    margin-bottom: 100px;
+    padding-bottom: 40px;
+    border-radius: 70px;
+    width: 180px ;
+    height: 200px;
+}
+
+#liste_amis > ul {
+    list-style-type:none;
+    
+}
+
+
+#liste_amis > ul > li > a {
+    color: white;
+    text-decoration: none;
+    
+}
+
+
+#titre_amis{
+    font-size: 30px;
+    margin-bottom: 20px;
+>>>>>>> 34c25126433a410bdae0d8c46cfcee672a63284b
 }

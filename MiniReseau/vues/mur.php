@@ -1,15 +1,19 @@
 <link rel="stylesheet" href="./css/mur_style.css">
 <script src="./js/mur.js"></script>
 
+    <?php
+include("./config/bd.php"); 
+?>
+
 <header>
 <div id="header">
     
-  <img src="./css/src/Logo_moose.png" alt="LOGO DU SITE" width="70px" >
-  <img src="./css/src/home.png" alt="ICONE HOME" width="60px">
-  <a href="index.php?action=profil&id=<?php echo $_SESSION['id']?>"><img src="./css/src/profil.png" alt="ICONE PROFIL" width="100px"></a>
+  <img src="./css/src/Logo_moose.png" alt="LOGO DU SITE" width="90px" >
+  <a href="index.php?action=profil&id=<?php echo $_SESSION['id']?>">
+    <img src="./css/src/profil.png" alt="ICONE PROFIL" width="100px"></a>
     
 <ul>
-  <li><input id="searchbox"type="search" placeholder="Chercher un Amoose" name="rechercher">
+  <li><input id="searchbox"type="search" placeholder="Chercher un Amoose" name="rep">
     <div id="resultat-recherche">
        <div id="box_user">
         <a href="#">
@@ -29,13 +33,40 @@
       </div>    
     </li>
 </ul>
-    <a href="index.php?action=deconnexion">Déconnexion</a>
+    <a id="deconex" href="index.php?action=deconnexion">Déconnexion</a>
 </div>
 
 </header>
 
 <main>
+    
 
+    <!--<form action="index.php?action=mur" method="get">
+    
+    <input type="search"  id="searchbox" name="rep" placeholder="rechercher un amoose"/>
+    <input type="submit" value="valider"/>--!>
+    
+<?php
+        
+    $rep = htmlspecialchars($_GET['rep']);
+	$sql = 'SELECT login FROM user WHERE login LIKE "%'.$rep.'%" ORDER BY id DESC';  
+	$query = $pdo->prepare($sql); 
+	
+	$query->execute(); 
+	
+	
+	while($line = $query->fetch()) { 
+		$nom = $line['login'];
+		echo "<option>$nom</option>";
+	}       
+?>
+    
+    
+    
+    
+    
+    
+    
  <div >
     <div class="nouveaupost">
         
@@ -46,7 +77,7 @@
                 </textarea>
              
              </div>
-         <div class="form-group">
+             <div class="form-group">
               <input type="submit" id="boutonpublier" name="publier" value="Publier">
              
              </div>
@@ -131,5 +162,7 @@
     // Requête de sélection des éléments dun mur
      // SELECT * FROM ecrit WHERE idAmi=? order by dateEcrit DESC
      // le paramètre  est le $id
+       
+        $sql = "SELECT * FROM ecrit WHERE idAmi=? ORDER BY dateEcrit DESC";
     }
 ?>
