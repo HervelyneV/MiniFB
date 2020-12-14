@@ -161,5 +161,7 @@ include("./config/bd.php");
     // Requête de sélection des éléments dun mur
      // SELECT * FROM ecrit WHERE idAmi=? order by dateEcrit DESC
      // le paramètre  est le $id
+       
+        $sql = "SELECT * FROM ecrit WHERE idAmi=? ORDER BY dateEcrit DESC";
     }
 ?>

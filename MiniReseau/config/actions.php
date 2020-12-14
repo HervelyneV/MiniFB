@@ -10,7 +10,10 @@ $listeDesActions = array(
     "accueil" => "vues/accueil.php",
     "inscription" => "traitement/inscription.php",
     "ajouterpost" => "traitement/ajoutpost.php",
-    "profil" => "vues/profil.php"
+    "profil" => "vues/profil.php",
+    "ajoutpost" => "traitement/ajoutpost.php",
+    "ajouter-post" => "traitement/ajouter-post.php",
+    
 );
 
 ?>
