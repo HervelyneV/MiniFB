@@ -15,6 +15,7 @@
         </div>
          <div id="liste_amis">
             <ul>
+                 <li id="titre_amis"> Amis : </li>
                 <?php
                      $sql ="SELECT * FROM user WHERE id IN ( SELECT user.id FROM user INNER JOIN lien ON idUtilisateur1=user.id AND etat='amis' AND idUtilisateur2=? UNION SELECT user.id FROM user INNER JOIN lien ON idUtilisateur2=user.id AND etat='amis' AND idUtilisateur1=?)";
 
@@ -25,8 +26,9 @@
                      while($line = $q->fetch()){
     
                  ?>
-                
-                <li><a href="index.php?action=profil&id=<?php echo $line["id"]; ?>" class="lien_ami"><?php echo $line["login"];?></a></li>
+               
+                <li>
+                    <a href="index.php?action=profil&id=<?php echo $line["id"]; ?>" class="lien_ami"><?php echo $line["login"];?></a></li>
              
                  <?php
                      }
