@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="./css/amis_style.css">
+
 <?php
     //echo "Page d'amis.";
     if(!(isset($_SESSION["id"])) || !(isset($_SESSION["login"]))){
@@ -8,19 +10,24 @@
 
 <!-- <body> -->
 <!--PAGE D'AMIS-->
-<div class="page_accueil">
+ <div id="header">
+    <div class="page_accueil">
     <div id="sidebar-menu">
         <div id="profil">
-            <p id="prenomNom" onclick="viewProfil(<?php echo $_SESSION["id"]; ?>)"><?php echo str_replace("_", " ", $_SESSION["login"]); ?></p>
+            <p id="prenomNom" onclick="viewProfil(<?php echo $_SESSION["id"]; ?>)">Bonjour <?php echo str_replace("_", " ", $_SESSION["login"]); ?></p>
         </div>
-
+</div>
         <nav id="menu-liens">
-            <a href="index.php?action=accueil">Accueil</a><br/>
-            <a href="index.php?action=amis">Amis</a><br/>
+            <a href="index.php?action=accueil">Accueil</a>
+            <a href="index.php?action=amis">Amis</a>
             <a href="index.php?action=profil&id=<?php echo $_SESSION["id"]; ?>">Mon profil</a>
+            <a href="index.php?action=deconnexion" id="lien-deconnexion">Déconnexion</a>
         </nav>
+         </div>
+         </div>
 
         <div id="liste-amis">
+            <p id="titre_amis"> Liste d'amis : </p>
             <ul>
                 <?php
                      $sql = "SELECT * FROM user WHERE id IN ( SELECT user.id FROM user INNER JOIN lien ON idUtilisateur1=user.id AND etat='amis' AND idUtilisateur2=? UNION SELECT user.id FROM user INNER JOIN lien ON idUtilisateur2=user.id AND etat='amis' AND idUtilisateur1=?) LIMIT 0, 5";
@@ -41,8 +48,8 @@
             </ul>
         </div>
 
-        <a href="index.php?action=deconnexion" id="lien-deconnexion">Déconnexion</a>
-    </div>
+        
+   
 
     <div id="main-contain">
 
@@ -117,14 +124,13 @@
         </div>
     </div>
     
-    <div class="footer">
-        <div id="copyright">
-            <a id="lien-accueil" href="index.php?action=accueil"><img id="logo" src="images/logo.png" alt="Logo_Wolface" /></a>
+    <div id="footer">
+            <a id="lien_accueil" href="index.php?action=accueil"><img id="logo" src="./css/src/Logo_moose.png" alt="Logo_moose" /></a>
             <p id="copyright-text">
-                Copyright ©2020 Moose
+                Copyright ©2020<br/>
+                Tout droits réservés à Moose
             </p>
         </div>
-    </div>
     
 </div>
 <!-- </body> -->

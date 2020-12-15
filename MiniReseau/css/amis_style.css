@@ -1,0 +1,64 @@
+body{
+    font-weight: 400; 
+    padding: 0;
+    margin: 0;
+   
+}
+#header{
+    background-color: #1B998B;
+    padding: 5px;
+    padding-top: 20px;
+}
+
+#sidebar-menu {
+    display: flex;
+    justify-content: space-between;
+}
+
+#menu-liens > a{
+    color : white;
+    text-decoration: none;
+    padding-right: 160px;
+    font-size: 30px;
+    
+padding-left: 180px;
+  
+}
+#profil{
+     color: #F4AFAB;
+    font-size: 30px;
+}
+
+#titre_amis {
+    padding-top: 20px;
+    font-size: 20px;
+}
+
+#liste_amis > ul {
+    list-style-type:none;
+    
+}
+
+#liste_amis > ul > li > a {
+    color: white;
+    text-decoration: none;
+    
+}
+
+
+
+#copyright-text{
+    color: white;
+   
+}
+#footer {
+    display: flex;
+    background-color: #1B998B;
+    justify-content: space-between;
+    padding-top: 10px;
+    color: white;
+}
+#footer img {
+    padding-left: 10px;
+    width: 50px;
+}
