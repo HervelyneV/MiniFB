@@ -6,39 +6,15 @@
     }
 ?>
 
-<div class="profil">
-        <div id="profil_top">
+<div class="my_profil">
+        <div id="banner_myprofil">
             <img src="./css/src/igloo.png">
             <p>De retour chez soi!</p>
-            <h2 id="login_title"><?php echo $_SESSION["login"]; ?></h2>
+            <h2 id="myprofil_title">Profil</h2>
               <a href="index.php?action=deconnexion" id="lien_deco">Déconnexion</a>
         </div>
-         <div id="liste_amis">
-            <ul>
-                 <li id="titre_amis"> Amis : </li>
-                <?php
-                     $sql ="SELECT * FROM user WHERE id IN ( SELECT user.id FROM user INNER JOIN lien ON idUtilisateur1=user.id AND etat='amis' AND idUtilisateur2=? UNION SELECT user.id FROM user INNER JOIN lien ON idUtilisateur2=user.id AND etat='amis' AND idUtilisateur1=?)";
-
-                     $q = $pdo->prepare($sql);
-
-                     $q->execute(array($_SESSION["id"], $_SESSION["id"]));
-
-                     while($line = $q->fetch()){
     
-                 ?>
-               
-                <li>
-                    <a href="index.php?action=profil&id=<?php echo $line["id"]; ?>" class="lien_ami"><?php echo $line["login"];?></a></li>
-             
-                 <?php
-                     }
-                 ?>
-            </ul>
-        </div>
-
-    </div>
-
-    <div id="profil_content">
+     <div id="myprofil_content">
         <div class="container_profil">
             <?php
                 $sql = "SELECT * FROM user where id=?";
@@ -55,12 +31,12 @@
                 }else{
                 
             ?>
-           <div id="profil">
                 <div id="profil_infos">
                         <span id="profil_login"><?php  echo ucwords($line["login"]); ?></span>
                     </div>
-                </div>
-            
+         
+
+         </div>   
              <div id="liste_amis">
             <ul>
                  <h3 id="titre_amis">Amis</h3>
@@ -154,33 +130,12 @@
                             <div id="ecrit-commentaire">
                                 <form action="index.php?action=ajoutCommentaire" method="post">
                                     <textarea id="contenu" name="contenu" placeholder="Commentez ici..." required></textarea>
-                                    <input type="hidden" name="idPost" value="<?php echo $line_commentaire["idPost"]; ?>" />
+                                    <input type="hidden" name="idPost" value="<?php echo $line_posts["dateEcrit"]; ?>" />
                                     <input type="submit" value="Envoyer">
                                 </form>
                             </div>
-                            
-                            <?php
-                                //Liste des posts
-                                $sql_comments = "SELECT commentaire.*, user.* FROM commentaire JOIN user ON user.id=commentaire.idUser WHERE commentaire.idPost=? ORDER BY commentaire.dateCommentaire DESC";
-
-                                $q_comments = $pdo->prepare($sql_comments);
-
-                                $q_comments->execute(array($line_posts["idPost"]));
-
-                                while($line_comments = $q_comments->fetch()){
-                                    /*echo "<pre>";
-                                    var_dump($line_comments);
-                                    echo "</pre>";*/
-                            ?>
-                            <div class="commentaire">
-                                <div class="main_commentaire">
-                                    <p class="commentaire_user"><?php echo $line_commentaire["contenu"]; ?></p>
-                                    <p class="date_commentaire">Posté par <?php echo $line_commentaire["login"]; ?> le <?php echo $line_comments["dateCommentaire"]; ?></p>
-                                </div>
-                            </div>
-                            <?php
-                                }
-                  
+                       
+                  <?php
                         }
 
               }
@@ -194,9 +149,6 @@
                         $q_verif->execute(array($_GET["id"], $_SESSION["id"], $_SESSION["id"], $_GET["id"]));
 
                         $line_verif = $q_verif->fetch();
-                        echo "<pre>";
-                        print_r($line_verif);
-                        echo "</pre>";
 
                         if(!$line_verif){
                             $ok = false;
