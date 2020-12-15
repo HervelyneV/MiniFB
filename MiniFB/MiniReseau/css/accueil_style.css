@@ -1,0 +1,140 @@
+@font-face {
+ font-family: "Roboto";
+ src: url("../css/font/Roboto-Regular.ttf");
+}
+
+#accueil {
+    font-family: "Roboto";
+    margin-top: 55px;
+}
+#accueil #left {
+position: absolute;
+width: 880px;
+height: 600px;
+left: 50%;
+background: #F7F7FF;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 117px;
+transform: translateX(-50%);
+}
+
+#left h2 {
+position: relative;
+width: 266px;
+height: 56px;
+left: 120px;
+top: 30px;
+text-transform: uppercase;
+font-size: 36px;
+color : #29335C;
+}
+
+#left input {
+    position: relative;
+    background-color: #1B998B;
+    width: 15.4rem;
+    padding: 10px;
+    margin-bottom: 50px;
+    font-size: 1rem;
+    color: white;
+    top: 100px;
+    left: 130px;
+    border: none;
+    border-radius: 10px;
+    
+}
+#left input:hover {
+    box-shadow: 5px 5px 5px #555;
+}
+
+#right_moose {
+    
+display: flex;
+position: relative;
+width: 450px;
+height: 607px;
+left: 800px;
+top: 0;
+background: #1B998B;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 117px; 
+}
+@media screen and (max-width: 768px){
+    #right_moose{
+        display: none;
+    }
+}
+#right_moose h1{
+font-family: "moose";
+position: absolute;
+top: 60px;
+left: 35%;
+font-size: 80px;
+color: #F4AFAB;
+transform: translate(-50%, -20px);
+    
+}
+#right_moose div{
+    position: absolute;
+    bottom: 30px;
+    right: 10px;
+    display: flex;
+}
+#right_moose div p{
+    position: relative;
+    margin-top: 50px;
+    color: #F7F7FF;
+    font-size: 1rem;
+    font-weight: 200;
+    font-style: italic;
+    left:35px;
+    top: 10px;
+    text-align: right;
+}
+#right_moose img {
+    
+    /*position: relative;*/
+    width: 200px;
+    height: 250px;
+    
+}
+/* Responsive */
+.container{
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+@media (min-width: 1200px)
+.container {
+    max-width: 1140px;
+}
+@media (min-width: 992px)
+.container {
+    max-width: 960px;
+}
+@media (min-width: 768px)
+.container {
+    max-width: 720px;
+}
+@media (min-width: 576px)
+.container {
+    max-width: 540px;
+}
+@media (min-width: 1200px)
+.container {
+    max-width: 1140px;
+}
+@media (min-width: 992px)
+.container {
+    max-width: 960px;
+}
+@media (min-width: 768px)
+.container {
+    max-width: 720px;
+}
+@media (min-width: 576px)
+.container {
+    max-width: 540px;
+}
