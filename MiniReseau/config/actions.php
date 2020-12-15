@@ -13,7 +13,10 @@ $listeDesActions = array(
     "profil" => "vues/profil.php",
     "ajoutpost" => "traitement/ajoutpost.php",
     "ajouter-post" => "traitement/ajouter-post.php",
-    
+    "amis" => "vues/amis.php",
+    "demandeamis" => "traitements/DemandeAmi.php",
+    "acceptamis" => "traitements/AcceptAmis.php",
+    "refusamis" => "traitements/refusAmis.php"
 );
 
 ?>

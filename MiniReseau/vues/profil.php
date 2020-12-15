@@ -11,6 +11,7 @@
             <img src="./css/src/igloo.png">
             <p>De retour chez soi!</p>
             <h2 id="myprofil_title">Profil</h2>
+            <a href="index.php?action=amis" id="lien_amis">Mes amis</a>
               <a href="index.php?action=deconnexion" id="lien_deco">Déconnexion</a>
         </div>
     
@@ -28,7 +29,9 @@
             
                 if(!$line){
                     header("Location: index.php?action=accueil");
-                }else{
+                }
+            
+                else{
                 
             ?>
                 <div id="profil_infos">
