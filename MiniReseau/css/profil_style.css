@@ -1,15 +1,15 @@
-.profil{
+.my_profil{
     font-family: "Roboto";
 }
 
-#profil_top{
+#banner_myprofil{
     background-color: #1B998B;
     padding: 50px;
     display: flex;
 
 }
 
-#profil_top h2{
+#banner_myprofil h2{
     position: relative;
     color: #F4AFAB;
     font-size: 22pt;
@@ -17,12 +17,12 @@
     left: 400px;
 }
 
-#profil_top img{
+#banner_myprofil img{
     position: relative;
      width: 130px;
 }
 
-#profil_top p {
+#banner_myprofil p {
     position: relative;
     font-size: 12pt;
     color: white;
@@ -32,10 +32,14 @@
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 .header-profil div img{
     width: 10%;
 =======
 #profil_top a{
+=======
+#banner_myprofil a{
+>>>>>>> b3bf42d305db06300bfbb7c29d8fe73b6d6dd1bb
     color: #F4AFAB;
     font-size: 14pt;
     position: relative;
