@@ -13,7 +13,8 @@
     position: relative;
     color: #F4AFAB;
     font-size: 22pt;
-    left: 295px;
+    top: 20px;
+    left: 400px;
 }
 
 #banner_myprofil img{
@@ -30,56 +31,26 @@
     top:20px;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-.header-profil div img{
-    width: 10%;
-=======
-#profil_top a{
-=======
 #banner_myprofil a{
->>>>>>> b3bf42d305db06300bfbb7c29d8fe73b6d6dd1bb
     color: #F4AFAB;
     font-size: 14pt;
     position: relative;
-    text-decoration: none;
-    top: 35px;
-    
+    left: 800px;
+    top: 30px;
+    text-decoration: none;    
 }
 
-#lien_deco{
-    left: 700px;
-}
-#lien_amis {
-    left: 500px;
-}
-#myprofil_infos{
-        
-    position: relative;
-    color: #F4AFAB;
-    font-size: 22pt;
-   text-align: center;
-    padding-top: 50px;
-    }
-  
-}
-
-#titre_amis{
-    position: relative;
-    left: 50px;
-}
 #liste_amis{
-    display: flex;
-    background-color: #29335C;
-    
-   
-    
+    background-color: #29335C;    
 }
+
 #profil div img{
     width: 7%;
->>>>>>> 34c25126433a410bdae0d8c46cfcee672a63284b
 }
 
+.header-profil i{
+    color: white;
+}
 
 .header-profil p{
     color: white;
@@ -91,14 +62,7 @@
     text-decoration: none;
 }
 
-.container-profil img{
-    width: 20px;
-    height: 20px;
-    background-color: white;
-}
-
 .amis{
-    background-color: ;
     width: 400px;
     margin-left: 100px;
     margin-top: 50px;
@@ -109,19 +73,6 @@
     text-decoration: underline;
 }
 
-<<<<<<< HEAD
-.amis h2{
-    color: white;
-}
-
-.container-post{
-    background-color: #F7F7FF;
-    margin-top: 50px;
-}
-
-.container-post h2{
-    color:  #1B998B;
-=======
 #footer {
     display: flex;
     background-color: #1B998B;
@@ -164,5 +115,4 @@
 #titre_amis{
     font-size: 30px;
     margin-bottom: 20px;
->>>>>>> 34c25126433a410bdae0d8c46cfcee672a63284b
 }

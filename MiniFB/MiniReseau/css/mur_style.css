@@ -1,0 +1,163 @@
+body{
+    font-weight: 400; 
+    padding: 0;
+    margin: 0;
+    font-family: "Roboto";
+}
+
+header{
+    background-color: #1B998B;
+    padding: 20px;
+}
+
+#header {
+    display: flex;
+    justify-content: space-between;
+}
+
+#header > a{
+    text-decoration:none;
+    color: #F4AFAB;
+    font-size: 25px;
+    padding-top: 20px;
+}
+
+#header > ul{
+     list-style-type:none;
+}
+#searchbox{
+    border-radius: 20px;
+    background-color: #F7F7FF;
+    text-decoration: none;
+    margin-top: 30px;
+    
+}
+
+#box_user{
+    padding: 6px;
+    border-top: 1px solid #dedede;
+    height: 50px;
+    width: 165px;
+    position: relative;
+}
+
+#box_user:hover{
+    background-color: aliceblue;
+    padding: 6px;
+    border-top: 1px solid #dedede;
+    height: 50px;
+    width: 165px;
+    position: relative;
+    cursor: pointer;
+}
+
+#box_user > a{
+    color: black;
+    text-decoration: none;
+}
+
+#resultat-recherche{
+    background-color: #F7F7FF;
+    text-decoration: none;
+    border-top: 1px;
+    border-right: 1px;
+    border-left: 1px;
+    border-bottom: 1px;
+    position: fixed;
+    display: none; 
+}
+
+#deconex {
+    margin-top: 20px;
+}
+
+#mur-container {
+    background-color: #F7F7FF;
+    padding-top: 15px;
+    margin-top: 50px;
+    margin-left: 200px; 
+    margin-right: 200px; 
+    margin-bottom: 200px;
+    padding-bottom: 50px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #29335C;
+}
+
+h1{
+    color: #1B998B;
+}
+
+#Photodeprofil{
+    
+}
+
+#all_post{
+    width: 90%;
+}
+
+#all_post h2{
+    color: #1B998B;
+    margin-left: 20px;
+}
+
+#all_post p{
+    margin-left: 20px;
+}
+
+#all_post input{
+    background-color: white;
+    border: none;
+    color: #F4AFAB;
+    margin-left: 20px;
+}
+
+.div-post{
+    border-radius: 20px;
+    background-color: white;
+    margin: 50px 0;
+    border: 1px solid #29335C;
+}
+
+.nouveaupost{
+    padding-top: 15px;
+    margin-top: 50px;
+    margin-left: 350px; 
+    margin-right: 350px; 
+    padding-bottom: 50px;
+    border-radius: 30px;
+}
+
+#contenttext{
+    resize: none;
+    background-color: #F7F7FF;
+    border: none;
+    border-radius: 10px;
+    width: 1150px;
+    border: 1px solid #29335C;
+}
+
+#contenttext:focus{
+    resize: none;
+    background-color: #fff;
+    border:1rem ;
+    border-radius: 10px;
+    width: 1150px;
+}
+
+#boutonpublier{
+    border: none;
+    background-color: #F7F7FF;
+    border-radius: 10px;
+    float: right;
+    margin-right:  10px;
+    border: 1px solid #29335C;
+}
+.form-group > label{
+    display: flex;
+    text-align: center;
+    color: #1B998B;
+    font-size: 30px;
+}

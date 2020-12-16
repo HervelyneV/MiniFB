@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-<link rel="stylesheet" href="./css/profil_style.css">
-<section class="profil-page">
-    <div class="header-profil">
-        <div>
-            <img src="./css/src/igloo.PNG">
-            <img src="./css/src/home.png" alt="ICONE HOME">
-            <div>
-                <p>Nom<br>Prénom</p>
-                <p>Avatar</p>
-            </div> 
-                <a href="index.php?action=deconnexion">Déconnexion</a>
-=======
 <?php
     //echo "Page d'accueil.";
     if(!(isset($_SESSION["id"])) || !(isset($_SESSION["login"]))){
@@ -26,62 +13,9 @@
             <h2 id="myprofil_title">Profil</h2>
             <a href="index.php?action=amis" id="lien_amis">Mes amis</a>
               <a href="index.php?action=deconnexion" id="lien_deco">Déconnexion</a>
->>>>>>> 34c25126433a410bdae0d8c46cfcee672a63284b
         </div>
-<<<<<<< HEAD
-         <div id="liste_amis">
-            <ul>
-                 <li id="titre_amis"> Amis : </li>
-                <?php
-                     $sql ="SELECT * FROM user WHERE id IN ( SELECT user.id FROM user INNER JOIN lien ON idUtilisateur1=user.id AND etat='amis' AND idUtilisateur2=? UNION SELECT user.id FROM user INNER JOIN lien ON idUtilisateur2=user.id AND etat='amis' AND idUtilisateur1=?)";
-
-                     $q = $pdo->prepare($sql);
-
-                     $q->execute(array($_SESSION["id"], $_SESSION["id"]));
-
-<<<<<<< HEAD
-    <div class="container-profil">
-        <div class="amis">
-            <h1>Amis :</h1>
-                <div>
-                    <img src="" alt="">
-                    <h2>Zelia Tiran</h2>
-                </div>
-        <div>
-        <div class="container-post">
-            <div>
-                <img src="" alt="">
-                <h2>Théo Cremers</h2>
-                <p>Yop, les amis ! Comment ça va !</p>
-                <button>Supprimer</button>
-            </div>
-        </div>
-=======
-                     while($line = $q->fetch()){
-    
-                 ?>
-               
-                <li>
-                    <a href="index.php?action=profil&id=<?php echo $line["id"]; ?>" class="lien_ami"><?php echo $line["login"];?></a></li>
-             
-                 <?php
-                     }
-                 ?>
-            </ul>
-        </div>
-
-<<<<<<< HEAD
-      
->>>>>>> 34c25126433a410bdae0d8c46cfcee672a63284b
-=======
->>>>>>> 86869be15a2d8a3adbbab6d74fecf2a0394c93aa
-    </div>
-
-    <div id="profil_content">
-=======
     
      <div id="myprofil_content">
->>>>>>> b3bf42d305db06300bfbb7c29d8fe73b6d6dd1bb
         <div class="container_profil">
             <?php
                 $sql = "SELECT * FROM user where id=?";
@@ -100,7 +34,7 @@
                 else{
                 
             ?>
-                <div id="myprofil_infos">
+                <div id="profil_infos">
                         <span id="profil_login"><?php  echo ucwords($line["login"]); ?></span>
                     </div>
          
@@ -151,8 +85,8 @@
                             <div class="voir_ami">
                                 <span class="ami_name"><?php echo $line3["login"]; ?></span>
                                 <span class="etat_ami">Demande reçue</span>
-                                <a class="bouton-accept" href="index.php?action=acceptamis&id=<?php echo $line3["id"]; ?>">Accepter</a>
-                                <a class="bouton-reject" href="index.php?action=refusamis&id=<?php echo $line3["id"]; ?>">Refuser</a>
+                                <a class="bouton-accept" href="index.php?action=accept&id=<?php echo $line3["id"]; ?>">Accepter</a>
+                                <a class="bouton-reject" href="index.php?action=reject&id=<?php echo $line3["id"]; ?>">Refuser</a>
                             </div>
                             <?php
                         }
@@ -237,7 +171,7 @@
                 ?>
                     <div id="message_ok">
                         <p>Vous n'êtes pas encore amoose</p>
-                        <a href="index.php?action=demandeamis&id=<?php echo $_GET["id"]; ?>" id="demande_ami_lien">Faire une demande d'amoose</a>
+                        <a href="index.php?action=demandeAmi&id=<?php echo $_GET["id"]; ?>" id="demande_ami_lien">Faire une demande d'amoose</a>
                     </div>
                 <?php
                     }else{
@@ -302,8 +236,8 @@
                             <div class="voir_ami">
                                 <span class="ami_name"><?php echo $line3["login"]; ?></span>
                                 <span class="etat_ami">Demande reçue</span>
-                                <a class="bouton-accept" href="index.php?action=acceptamis&id=<?php echo $line3["id"]; ?>">Accepter</a>
-                                <a class="bouton-reject" href="index.php?action=refusamis&id=<?php echo $line3["id"]; ?>">Refuser</a>
+                                <a class="bouton-accept" href="index.php?action=accept&id=<?php echo $line3["id"]; ?>">Accepter</a>
+                                <a class="bouton-reject" href="index.php?action=reject&id=<?php echo $line3["id"]; ?>">Refuser</a>
                             </div>
                             <?php
                         }                  
@@ -311,7 +245,7 @@
                     ?>
                     <?php
                     //Liste d'amis confirmés
-                    $sql_amis = "SELECT * FROM user WHERE id IN ( SELECT user.id FROM user INNER JOIN lien ON idUtilisateur1=user.id AND etat='ami' AND idUtilisateur2=? UNION SELECT user.id FROM user INNER JOIN lien ON idUtilisateur2=user.id AND etat='ami' AND idUtilisateur1=?) ORDER BY user.login";
+                    $sql_amis = "SELECT * FROM user WHERE id IN ( SELECT user.id FROM user INNER JOIN lien ON idUtilisateur1=user.id AND etat='ami' AND idUtilisateur2=? UNION SELECT user.id FROM user INNER JOIN lien ON idUtilisateur2=users.id AND etat='ami' AND idUtilisateur1=?) ORDER BY user.login";
                 
                     $q4 = $pdo->prepare($sql_amis);
                     
