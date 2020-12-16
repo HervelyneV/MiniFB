@@ -34,7 +34,7 @@
                 else{
                 
             ?>
-                <div id="profil_infos">
+                <div id="myprofil_infos">
                         <span id="profil_login"><?php  echo ucwords($line["login"]); ?></span>
                     </div>
          
@@ -85,8 +85,8 @@
                             <div class="voir_ami">
                                 <span class="ami_name"><?php echo $line3["login"]; ?></span>
                                 <span class="etat_ami">Demande reçue</span>
-                                <a class="bouton-accept" href="index.php?action=accept&id=<?php echo $line3["id"]; ?>">Accepter</a>
-                                <a class="bouton-reject" href="index.php?action=reject&id=<?php echo $line3["id"]; ?>">Refuser</a>
+                                <a class="bouton-accept" href="index.php?action=acceptamis&id=<?php echo $line3["id"]; ?>">Accepter</a>
+                                <a class="bouton-reject" href="index.php?action=refusamis&id=<?php echo $line3["id"]; ?>">Refuser</a>
                             </div>
                             <?php
                         }
@@ -171,7 +171,7 @@
                 ?>
                     <div id="message_ok">
                         <p>Vous n'êtes pas encore amoose</p>
-                        <a href="index.php?action=demandeAmi&id=<?php echo $_GET["id"]; ?>" id="demande_ami_lien">Faire une demande d'amoose</a>
+                        <a href="index.php?action=demandeamis&id=<?php echo $_GET["id"]; ?>" id="demande_ami_lien">Faire une demande d'amoose</a>
                     </div>
                 <?php
                     }else{
@@ -236,8 +236,8 @@
                             <div class="voir_ami">
                                 <span class="ami_name"><?php echo $line3["login"]; ?></span>
                                 <span class="etat_ami">Demande reçue</span>
-                                <a class="bouton-accept" href="index.php?action=accept&id=<?php echo $line3["id"]; ?>">Accepter</a>
-                                <a class="bouton-reject" href="index.php?action=reject&id=<?php echo $line3["id"]; ?>">Refuser</a>
+                                <a class="bouton-accept" href="index.php?action=acceptamis&id=<?php echo $line3["id"]; ?>">Accepter</a>
+                                <a class="bouton-reject" href="index.php?action=refusamis&id=<?php echo $line3["id"]; ?>">Refuser</a>
                             </div>
                             <?php
                         }                  
@@ -245,7 +245,7 @@
                     ?>
                     <?php
                     //Liste d'amis confirmés
-                    $sql_amis = "SELECT * FROM user WHERE id IN ( SELECT user.id FROM user INNER JOIN lien ON idUtilisateur1=user.id AND etat='ami' AND idUtilisateur2=? UNION SELECT user.id FROM user INNER JOIN lien ON idUtilisateur2=users.id AND etat='ami' AND idUtilisateur1=?) ORDER BY user.login";
+                    $sql_amis = "SELECT * FROM user WHERE id IN ( SELECT user.id FROM user INNER JOIN lien ON idUtilisateur1=user.id AND etat='ami' AND idUtilisateur2=? UNION SELECT user.id FROM user INNER JOIN lien ON idUtilisateur2=user.id AND etat='ami' AND idUtilisateur1=?) ORDER BY user.login";
                 
                     $q4 = $pdo->prepare($sql_amis);
                     

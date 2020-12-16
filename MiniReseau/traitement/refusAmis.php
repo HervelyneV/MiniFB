@@ -7,5 +7,5 @@
 
     $q->execute(array($_GET["id"], $_SESSION["id"]));
     
-    header("Location: index.php?action=profil");
+    header("Location: index.php?action=profil&id=");
 ?>

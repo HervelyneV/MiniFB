@@ -13,8 +13,7 @@
     position: relative;
     color: #F4AFAB;
     font-size: 22pt;
-    top: 20px;
-    left: 400px;
+    left: 295px;
 }
 
 #banner_myprofil img{
@@ -35,14 +34,34 @@
     color: #F4AFAB;
     font-size: 14pt;
     position: relative;
-    left: 800px;
-    top: 30px;
     text-decoration: none;
-    
+    top: 35px;
     
 }
+
+#lien_deco{
+    left: 700px;
+}
+#lien_amis {
+    left: 500px;
+}
+#myprofil_infos{
+        
+    position: relative;
+    color: #F4AFAB;
+    font-size: 22pt;
+   text-align: center;
+    padding-top: 50px;
+    }
+  
+}
+
+#titre_amis{
+    position: relative;
+    left: 50px;
+}
 #liste_amis{
-    
+    display: flex;
     background-color: #29335C;
     
    

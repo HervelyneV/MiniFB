@@ -1,5 +1,4 @@
 <?php
-    echo "Demande d'amitié envoyée !";
     
     $sql = "INSERT INTO lien VALUES(NULL,?,?,'attente')";
 

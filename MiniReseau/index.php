@@ -72,7 +72,6 @@ if (isset($_SESSION['info'])) {
             ob_end_flush(); // Je ferme le buffer, je vide la mémoire et affiche tout ce qui doit l'être
             ?>
 
-
 <!--<footer>Le pied de page</footer>-->
 </body>
 </html>
