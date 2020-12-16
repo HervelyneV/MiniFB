@@ -10,10 +10,16 @@
 <div class="my_profil">
         <div id="banner_myprofil">
             <img src="./css/src/igloo.png">
+            
             <p>De retour chez soi!</p>
+            
             <h2 id="myprofil_title">Profil</h2>
-            <a href="index.php?action=amis" id="lien_amis">Mes amis</a>
-              <a href="index.php?action=deconnexion" id="lien_deco">Déconnexion</a>
+            
+            <a href="index.php?action=mur&id=<?php echo $_SESSION["id"]; ?>">Mur</a>
+            
+            <a href="index.php?action=amis&id=<?php echo $_SESSION["id"]; ?>" id="lien_amis">Mes amis</a>
+            
+            <a href="index.php?action=deconnexion" id="lien_deco">Déconnexion</a>
         </div>
     
      <div id="myprofil_content">
@@ -36,14 +42,60 @@
                 
             ?>
                 <div id="profil_infos">
-                        <span id="profil_login"><?php  echo ucwords($line["login"]); ?></span>
+                      Profil de : <span id="profil_login"><?php  echo ucwords($line["login"]); ?></span>
                     </div>
          
 
+            
+            
+            
+            
+            
+            
+             <?php
+                    
+                    $ok = false;
+                    $ami = false;
+                    
+                    if($_GET["id"]==$_SESSION["id"]){
+                        $ok = true;
+            
+                        $sql_demande = "SELECT user.* FROM user WHERE id IN(SELECT idUtilisateur1 FROM lien WHERE idUtilisateur2=? AND etat='attente') ORDER BY user.login";
+
+                        $q3 = $pdo->prepare($sql_demande);
+
+                        $q3->execute(array($_SESSION["id"]));
+
+                        while($line3 = $q3->fetch()){
+                            /*echo "<pre>";
+                            print_r($line3);
+                            echo "</pre>";*/
+                            ?>
+                            <div class="voir_ami">
+                            
+                                <span class="etat_ami">Demande reçue</span>
+                                <span class="ami_name"> de la part de <?php echo $line3["login"]; ?></span>
+                                <a class="bouton-accept" href="index.php?action=acceptamis&id=<?php echo $line3["id"]; ?>"> Accepter</a>
+                                <a class="bouton-reject" href="index.php?action=refusamis&id=<?php echo $line3["id"]; ?>">Refuser</a>
+                            </div>
+                            <?php
+                        }
+                    ?>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
          </div>   
              <div id="liste_amis">
             <ul>
-                 <h3 id="titre_amis">Amis</h3>
+                 <h3 id="titre_amis">Amis : </h3>
                 <?php
                      $sql ="SELECT * FROM user WHERE id IN ( SELECT user.id FROM user INNER JOIN lien ON idUtilisateur1=user.id AND etat='amis' AND idUtilisateur2=? UNION SELECT user.id FROM user INNER JOIN lien ON idUtilisateur2=user.id AND etat='amis' AND idUtilisateur1=?)";
 
@@ -64,45 +116,26 @@
             </ul>
         </div>
                 
-                <?php
-                    
-                    $ok = false;
-                    $ami = false;
-                    
-                    if($_GET["id"]==$_SESSION["id"]){
-                        $ok = true;
             
-                        $sql_demande = "SELECT user.* FROM user WHERE id IN(SELECT idUtilisateur1 FROM lien WHERE idUtilisateur2=? AND etat='attente') ORDER BY user.login";
-
-                        $q3 = $pdo->prepare($sql_demande);
-
-                        $q3->execute(array($_SESSION["id"]));
-
-                        while($line3 = $q3->fetch()){
-                            /*echo "<pre>";
-                            print_r($line3);
-                            echo "</pre>";*/
-                            ?>
-                            <div class="voir_ami">
-                                <span class="ami_name"><?php echo $line3["login"]; ?></span>
-                                <span class="etat_ami">Demande reçue</span>
-                                <a class="bouton-accept" href="index.php?action=accept&id=<?php echo $line3["id"]; ?>">Accepter</a>
-                                <a class="bouton-reject" href="index.php?action=reject&id=<?php echo $line3["id"]; ?>">Refuser</a>
-                            </div>
-                            <?php
-                        }
-                    ?>
-                         <div id="ecrit_post">
-                    <form action="index.php?action=ajouterpost" method="post">
-                        <textarea id="content" name="content" placeholder="Racontez-nous vos histoire les plus dingues..." required></textarea>
-                        <?php
-                            if($line["id"] != $_SESSION["id"]){
-                                echo "<input type='hidden' name='idAmi' value='".$line['id']."' />";
-                            }
-                        ?>
-                        <input type="submit" value="Envoyer">
-                    </form>
-                </div>
+                           <div class="nouveaupost">
+        
+         <form action="index.php?action=ajoutpost" method="post">
+            <div class="form-group">
+              <label for="content">Ecrire un nouveau post sur ton mur :</label>
+              <textarea name="content" id="contenttext" rows="3"  placeholder="Tu peux écrire un nouveau statut">
+                </textarea>
+            <input type="hidden" name="profile-id" value="<?= $_SESSION['id'] ?>">
+             </div>
+             <div class="form-group">
+              <input type="submit" id="boutonpublier" name="publier" value="Publier">
+             
+             </div>
+      
+         </form>
+   
+    </div>
+    
+  </div> 
             
             <div id="profil_post">
                     <h3 id="title_profil_post">Mes posts</h3>
@@ -122,22 +155,14 @@
                     <div class="post_perso">
                         <div class="main_post">
                             <div class="ecrit_post">
-                                <p class="login_auteur"><?php echo $line_posts["login"]; ?></p>
+                                <p class="login_auteur">Écrit par : <?php echo $line_posts["login"]; ?></p>
                                 <p class="title_auteur"><?php echo $line_posts["titre"]; ?></p>
                                 <p class="post_auteur"><?php echo $line_posts["contenu"]; ?></p>
                                 <p class="date_post">Posté par <?php echo $line_posts["login"]; ?> le <?php echo $line_posts["dateEcrit"]; ?></p>
+                                <hr>
                             </div>
                         </div>
-                        <div class="commentaire_post">
-                            <h4 class="conmmentaire_title">Commentaires</h4>
-                            
-                            <div id="ecrit-commentaire">
-                                <form action="index.php?action=ajoutCommentaire" method="post">
-                                    <textarea id="contenu" name="contenu" placeholder="Commentez ici..." required></textarea>
-                                    <input type="hidden" name="idPost" value="<?php echo $line_posts["dateEcrit"]; ?>" />
-                                    <input type="submit" value="Envoyer">
-                                </form>
-                            </div>
+                      
                        
                   <?php
                         }
@@ -171,31 +196,40 @@
                     if($ok == false){
                 ?>
                     <div id="message_ok">
-                        <p>Vous n'êtes pas encore amoose</p>
-                        <a href="index.php?action=demandeAmi&id=<?php echo $_GET["id"]; ?>" id="demande_ami_lien">Faire une demande d'amoose</a>
+                        <p>Vous n'êtes pas encore amoose. Vous ne pouvez pas voir ce profil !</p>
+                        <a href="index.php?action=demandeamis&id=<?php echo $_GET["id"]; ?>" id="demande_ami_lien">Faire une demande d'amoose</a>
                     </div>
                 <?php
                     }else{
                         if($ami == false){
                 ?>
                             <div id="message_ok">
-                                <p>Vous n'êtes pas amoose. Dommage!</p>
+                                <p>Vous êtes connecté sur votre page de profil</p>
+                                
                             </div>
                 <?php
                         }else{
                 ?>        
                 
-                <div id="ecrit_post">
-                    <form action="index.php?action=ajouterpost" method="post">
-                        <textarea id="content" name="content" placeholder="Racontez-nous vos histoire les plus dingues..." required></textarea>
-                        <?php
-                            if($line["id"] != $_SESSION["id"]){
-                                echo "<input type='hidden' name='idAmi' value='".$line['id']."' />";
-                            }
-                        ?>
-                        <input type="submit" value="Envoyer">
-                    </form>
-                </div>
+                  <div class="nouveaupost">
+        
+         <form action="index.php?action=ajoutpost" method="post">
+            <div class="form-group">
+              <label for="content"> Écrire sur le mur de votre ami ! </label>
+              <textarea name="content" id="contenttext" rows="3"  placeholder="Tu peux écrire un nouveau statut">
+                </textarea>
+            <input type="hidden" name="profile-id" value="<?= $_SESSION['id'] ?>">
+             </div>
+             <div class="form-group">
+              <input type="submit" id="boutonpublier" name="publier" value="Publier">
+             
+             </div>
+      
+         </form>
+   
+    </div>
+    
+  </div> 
                 <div id="profil_amis">
                     <h3 id="amis_title">Mes amis</h3>
                     <?php
@@ -237,8 +271,8 @@
                             <div class="voir_ami">
                                 <span class="ami_name"><?php echo $line3["login"]; ?></span>
                                 <span class="etat_ami">Demande reçue</span>
-                                <a class="bouton-accept" href="index.php?action=accept&id=<?php echo $line3["id"]; ?>">Accepter</a>
-                                <a class="bouton-reject" href="index.php?action=reject&id=<?php echo $line3["id"]; ?>">Refuser</a>
+                                <a class="bouton-accept" href="index.php?action=acceptamis&id=<?php echo $line3["id"]; ?>">Accepter</a>
+                                <a class="bouton-reject" href="index.php?action=refusamis&id=<?php echo $line3["id"]; ?>">Refuser</a>
                             </div>
                             <?php
                         }                  

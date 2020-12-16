@@ -26,7 +26,7 @@ include("./config/bd.php");
 	
 	echo "<div id='personne'>";
 	while($line = $query->fetch()) { 
-		echo "<a href= 'index.php?action=profil&id=".$line['id']."'class='nom'>".$line['login']."</a><br/>";
+		echo "<a id='lien_personne' href= 'index.php?action=profil&id=".$line['id']."'class='nom'>".$line['login']."</a><br/>";
 	}       
      echo "</div>";
      }
@@ -113,14 +113,5 @@ include("./config/bd.php");
         // les deux ids à tester sont : $_GET["id"] et $_SESSION["id"]
         // A completer. Il faut récupérer une ligne, si il y en a pas ca veut dire que lon est pas ami avec cette personne
     }
-    if($ok==false) {
-        echo "Vous n êtes pas encore ami, vous ne pouvez voir son mur !!";       
-    } else {
-    // A completer
-    // Requête de sélection des éléments dun mur
-     // SELECT * FROM ecrit WHERE idAmi=? order by dateEcrit DESC
-     // le paramètre  est le $id
-       
-        $sql = "SELECT * FROM ecrit WHERE idAmi=? ORDER BY dateEcrit DESC";
-    }
+  
 ?>

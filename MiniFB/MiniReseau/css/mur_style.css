@@ -147,6 +147,8 @@ h1{
     width: 1150px;
 }
 
+
+
 #boutonpublier{
     border: none;
     background-color: #F7F7FF;
@@ -160,4 +162,9 @@ h1{
     text-align: center;
     color: #1B998B;
     font-size: 30px;
+}
+#lien_personne{
+    text-decoration: none;
+    color : #F4AFAB;
+
 }
