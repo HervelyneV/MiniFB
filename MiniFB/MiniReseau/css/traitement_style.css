@@ -1,0 +1,17 @@
+a {
+    color: #F4AFAB;
+     margin-left: 200px;
+    font-size: 20px;
+}
+
+*{
+    background-color: #1B998B ;
+}
+
+#container-amis{
+    margin-left: 500px;
+    margin-top: 50px;
+    padding-top: 50px;
+    color: aliceblue;
+    font-size: 50px;
+}

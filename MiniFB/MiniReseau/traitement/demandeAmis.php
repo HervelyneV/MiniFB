@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="./css/traitement_style.css">
+ <div id="container-amis">
 <?php
     echo "Demande d'amitié envoyée !";
     
@@ -11,3 +13,5 @@
 ?>
 <br/> 
 <a href="index.php?action=mur&id=<?php echo $_SESSION["id"]; ?>">Revenir sur le mur</a>
+     
+</div>

@@ -34,16 +34,53 @@ padding-left: 180px;
     font-size: 20px;
 }
 
-#liste_amis > ul {
+#liste-amis{
+     background-color: #F7F7FF;
+    padding-top: 15px;
+    margin-top: 50px;
+    margin-left: 400px; 
+    margin-right: 400px; 
+    margin-bottom: 200px;
+    padding-bottom: 50px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #29335C;
+}
+
+#liste-amis > ul {
     list-style-type:none;
+    color: black;
+}
+
+#liste-amis > ul > li > a {
+    
+
     
 }
 
-#liste_amis > ul > li > a {
-    color: white;
-    text-decoration: none;
+a {
+   
+    color: black;
+}
+
+#main-contain{
+     background-color: #F7F7FF;
+    padding-top: 15px;
+    margin-top: 50px;
+    margin-left: 400px; 
+    margin-right: 400px; 
+    margin-bottom: 200px;
+    padding-bottom: 50px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #29335C;
     
 }
+
 
 
 

@@ -25,7 +25,7 @@
         </nav>
          </div>
          </div>
-
+ 
         <div id="liste-amis">
             <p id="titre_amis"> Liste d'amis : </p>
             <ul>
