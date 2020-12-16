@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="./css/profil_style.css">
 <?php
     //echo "Page d'accueil.";
     if(!(isset($_SESSION["id"])) || !(isset($_SESSION["login"]))){

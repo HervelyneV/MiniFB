@@ -19,7 +19,7 @@
 </div>
         <nav id="menu-liens">
             <a href="index.php?action=accueil">Accueil</a>
-            <a href="index.php?action=amis">Amis</a>
+            <a href="index.php?action=mur">Mur</a>
             <a href="index.php?action=profil&id=<?php echo $_SESSION["id"]; ?>">Mon profil</a>
             <a href="index.php?action=deconnexion" id="lien-deconnexion">Déconnexion</a>
         </nav>

@@ -11,58 +11,35 @@ include("./config/bd.php");
   <img src="./css/src/Logo_moose.png" alt="LOGO DU SITE" width="90px" >
   <a href="index.php?action=profil&id=<?php echo $_SESSION['id']?>">
     <img src="./css/src/profil.png" alt="ICONE PROFIL" width="100px"></a>
-    
-<ul>
-  <li><input id="searchbox"type="search" placeholder="Chercher un Amoose" name="rep">
-    <div id="resultat-recherche">
-       <div id="box_user">
-        <a href="#">
-        <img src="./css/src/moose.png" width="20px">
-         Zelia tiran <br>
-         zelia@gmail.com
-           </a>
-        </div>
-        <div id="box_user">
-        <a href="#">
-        <img src="./css/src/moose.png" width="20px">
-         Zelia tiran <br>
-         zelia@gmail.com
-           </a>
-        </div>
-      
-      </div>    
-    </li>
-</ul>
     <a id="deconex" href="index.php?action=deconnexion">Déconnexion</a>
+    <form action='' method="POST">
+    
+    <input type="text"  id="searchbox" name="searchValue" required='required' placeholder="rechercher un amoose"/>
+    <input type="submit" name="search"   value="valider"/>
+    
+<?php
+ if (isset($_POST["search"])) { 
+    $text = strtolower($_POST['searchValue']);
+	$sql = "SELECT * FROM user WHERE lower(`login`) LIKE '%$text%'";  
+	$query = $pdo->prepare($sql); 
+	$query->execute(); 
+	
+	echo "<div id='personne'>";
+	while($line = $query->fetch()) { 
+		echo "<a href= 'index.php?action=profil&id=".$line['id']."'class='nom'>".$line['login']."</a><br/>";
+	}       
+     echo "</div>";
+     }
+?>
+    </form>
+    
+   
+    
 </div>
 
 </header>
 
 <main>
-    
-
-    <!--<form action="index.php?action=mur" method="get">
-    
-    <input type="search"  id="searchbox" name="rep" placeholder="rechercher un amoose"/>
-    <input type="submit" value="valider"/>--!>
-    
-<?php
-        
-    $rep = htmlspecialchars($_GET['rep']);
-	$sql = 'SELECT login FROM user WHERE login LIKE "%'.$rep.'%" ORDER BY id DESC';  
-	$query = $pdo->prepare($sql); 
-	
-	$query->execute(); 
-	
-	
-	while($line = $query->fetch()) { 
-		$nom = $line['login'];
-		echo "<option>$nom</option>";
-    }
-?>
-    
-    
-    
     
     
     
