@@ -204,7 +204,7 @@
                         if($ami == false){
                 ?>
                             <div id="message_ok">
-                                <p>Vous êtes connecté sur votre page de profil</p>
+                                <p><b>Vous êtes connecté sur votre page de profil</b></p>
                                 
                             </div>
                 <?php

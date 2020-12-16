@@ -16,7 +16,8 @@ $listeDesActions = array(
     "amis" => "vues/amis.php",
     "demandeamis" => "traitement/demandeAmis.php",
     "acceptamis" => "traitement/acceptAmis.php",
-    "refusamis" => "traitement/refusAmis.php"
+    "refusamis" => "traitement/refusAmis.php",
+    "supprimer" => "traitement/supprimer.php"
 );
 
 ?>

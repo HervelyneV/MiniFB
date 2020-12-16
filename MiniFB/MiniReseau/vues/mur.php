@@ -71,7 +71,7 @@ include("./config/bd.php");
     
 <div id="all_post">
     <?php
-    $mypostsql = "SELECT * FROM ecrit INNER JOIN user WHERE ecrit.idAuteur = user.id";
+    $mypostsql = "SELECT * FROM ecrit INNER JOIN user WHERE ecrit.idAuteur = user.id ORDER BY dateEcrit DESC";
 
     $query = $pdo->prepare($mypostsql);
     $query->execute([]);
@@ -82,7 +82,17 @@ include("./config/bd.php");
         <div class="div-post">
             <h2><?= $line["login"] ?></h2>
             <p><?= $line["contenu"]?></p>
-            <input type="submit" id="" name="supprimer" value="Supprimer">
+            
+            <?php
+            if($line["idAuteur"] == $_SESSION['id']){
+            ?>
+            <form action="index.php?action=supprimer" method="post">
+                <input type="hidden" name="supprimer-post-id" value="<?= $line['id'] ?>">
+                <input type="submit" id="" name="supprimer" value="Supprimer">
+            </form>
+            <?php
+            }
+            ?>
         </div>
         <?php
     }
