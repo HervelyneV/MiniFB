@@ -14,7 +14,7 @@ include("./config/bd.php");
     <a id="deconex" href="index.php?action=deconnexion">Déconnexion</a>
     <form action='' method="POST">
     
-    <input type="text"  id="searchbox" name="searchValue" required='required' placeholder="rechercher un amoose"/>
+    <input type="text"  id="searchbox" name="searchValue" required='required' placeholder="Rechercher un amoose"/>
     <input type="submit" name="search"   value="valider"/>
     
 <?php
