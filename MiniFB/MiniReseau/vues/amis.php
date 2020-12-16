@@ -53,11 +53,10 @@
 
     <div id="main-contain">
 
-        <div id="recherche">
-            <input type="search" id="friend-search" name="fs" placeholder="Rechercher un ami" onkeyup="searchPerson(this.value.toLowerCase());">
-        </div>
+        
 
         <div class="contain contain-amis">
+            <h4>Les relations d'amitié : </h4>
             <?php
                 $sql2 = "SELECT user.id AS idUser, user.* FROM user WHERE user.id != ? ORDER BY user.login";
                 //INNER JOIN friends ON users.id=friends.idUser1 OR users.id=friends.idUser2     
@@ -73,7 +72,10 @@
             ?>
 
             <div class="carte-ami" onclick="viewProfil(<?php echo $line2["idUser"]; ?>);">
-                <span class="nom-ami"><?php echo $line2["login"]; ?></span>
+                <span class="nom-ami">
+                    <a href="index.php?action=profil&id=<?php echo $line2["id"]; ?>">
+                        <?php echo $line2["login"]; ?></a>
+                </span>
                 <?php
                     //Attribution de l'état de l'amitié                
                     $sql3 = "SELECT * FROM lien WHERE (idUtilisateur1=? AND idUtilisateur2=?) OR (idUtilisateur1=? AND idUtilisateur2=?)";
@@ -91,26 +93,26 @@
 
                     if(!$line3){
                 ?>
-                        <span class="status-ami">Inconnu</span>
+                        <span class="status-ami"> : Inconnu</span>
                 <?php
                     }else{
                         if($line3["etat"]=="amis"){
                 ?>
-                        <span class="status-ami">Vous êtes amis</span>
+                        <span class="status-ami"> : Vous êtes amis</span>
                 <?php
                         }else if($line3["idUtilisateur1"]==$_SESSION["id"] && $line3["etat"]=="attente"){
                 ?>
-                        <span class="status-ami">Demande envoyée</span> <br/>
+                        <span class="status-ami"> : Demande envoyée</span> <br/>
                 <?php
                         }else if($line3["idUtilisateur2"]==$_SESSION["id"] && $line3["etat"]=="attente"){
                 ?>
-                        <span class="status-ami">Demande reçue</span>
-                        <a class="bouton-accept" href="index.php?action=accept&id=<?php echo $line3["idUtilisateur1"]; ?>">Accepter</a>
-                        <a class="bouton-reject" href="index.php?action=reject&id=<?php echo $line3["idUtilisateur1"]; ?>">Refuser</a>
+                        <span class="status-ami"> : Demande reçue</span>
+                        <a class="bouton-accept" href="index.php?action=acceptamis&id=<?php echo $line3["idUtilisateur1"]; ?>"> : Accepter</a>
+                        <a class="bouton-reject" href="index.php?action=refusamis&id=<?php echo $line3["idUtilisateur1"]; ?>"> : Refuser</a>
                 <?php
                         }else if($line3["etat"]=="refus"){
                 ?>
-                        <span class="status-ami">Vous n'êtes pas amis</span>
+                        <span class="status-ami"> : Vous n'êtes pas amis</span>
                 <?php  
                         }
                     }

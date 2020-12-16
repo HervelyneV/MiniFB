@@ -7,5 +7,7 @@
 
     $q->execute(array($_GET["id"], $_SESSION["id"]));
     
-    header("Location: index.php?action=profil");
+   
 ?>
+<br/> 
+<a href="index.php?action=mur&id=<?php echo $_SESSION["id"]; ?>">Revenir sur le mur</a>

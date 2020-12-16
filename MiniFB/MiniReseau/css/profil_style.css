@@ -4,17 +4,17 @@
 
 #banner_myprofil{
     background-color: #1B998B;
-    padding: 50px;
+    padding: 20px;
     display: flex;
 
 }
 
-#banner_myprofil h2{
+#banner_myprofil > h2{
     position: relative;
     color: #F4AFAB;
     font-size: 22pt;
     top: 20px;
-    left: 400px;
+    left: 500px;
 }
 
 #banner_myprofil img{
@@ -27,17 +27,18 @@
     font-size: 12pt;
     color: white;
     font-style: italic;
-    right: 70px;
+    
     top:20px;
 }
 
 #banner_myprofil a{
     color: #F4AFAB;
-    font-size: 14pt;
+    font-size: 22pt;
     position: relative;
     left: 800px;
-    top: 30px;
-    text-decoration: none;    
+    top: 41px;
+    text-decoration: none; 
+    margin-right: 100px;
 }
 
 #liste_amis{
@@ -90,13 +91,14 @@
     color  : white;
     text-decoration: none;
     padding-top: 15px;
-    margin-top: 50px;
+   
     margin-left: 40px; 
     margin-bottom: 100px;
     padding-bottom: 40px;
     border-radius: 70px;
     width: 180px ;
     height: 200px;
+    grid-area : amis;
 }
 
 #liste_amis > ul {
@@ -115,4 +117,53 @@
 #titre_amis{
     font-size: 30px;
     margin-bottom: 20px;
+}
+
+#profil_infos{
+    color: #F4AFAB;
+    font-size: 25px;
+    margin-left: 40px; 
+    margin-top: 20px;
+}
+
+#container_profil{
+        grid-area : name;
+
+}
+#nouveaupost{
+    grid-area : post;
+    margin-left: 5px;
+}
+
+#contenttext{
+    resize: none;
+    background-color: #F7F7FF;
+    border: none;
+    border-radius: 10px;
+    width: 900px;
+    border: 1px solid #29335C;
+    margin-left: 2px;
+}
+
+#contenttext:focus{
+    resize: none;
+    background-color: #fff;
+    border:1rem ;
+    border-radius: 10px;
+    width: 900px;
+}
+
+#myprofil_content{
+    display: grid;
+    grid-template-columns : 1fr 1fr 1fr;
+ grid-template-areas: 
+                    "name" 
+                    "amis" 
+                    "post" ;
+                    
+}
+
+#profil_post {
+    background-color:  #F7F7FF;
+    
 }
